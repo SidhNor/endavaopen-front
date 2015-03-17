@@ -35,7 +35,7 @@ module.exports = {
     port: process.env.OPENSHIFT_MONGODB_DB_PORT,
     user: process.env.OPENSHIFT_MONGODB_DB_USERNAME,
     password: process.env.OPENSHIFT_MONGODB_DB_PASSWORD,
-    database: 'open',
+    db: 'open',
     collection: 'sessions'
   }
 
