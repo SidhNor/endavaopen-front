@@ -27,7 +27,17 @@ module.exports = {
 
   port: process.env.OPENSHIFT_NODEJS_PORT || 8080,
 
-  host: process.env.OPENSHIFT_NODEJS_IP
+  host: process.env.OPENSHIFT_NODEJS_IP,
+
+  session: {
+    adapter: 'mongo',
+    host: process.env.OPENSHIFT_MONGODB_DB_HOST,
+    port: process.env.OPENSHIFT_MONGODB_DB_PORT,
+    user: process.env.OPENSHIFT_MONGODB_DB_USERNAME,
+    password: process.env.OPENSHIFT_MONGODB_DB_PASSWORD,
+    db: 'sails',
+    collection: 'sessions'
+  }
 
   /***************************************************************************
    * Set the log level in production environment to "silent"                 *
