@@ -1,6 +1,6 @@
 {
 	"Welcome": "Welcome",
-	"A brand new app.": "A brand new app.",
+	"App.Name": "Endava Open",
   "Error.Passport.Username.NotFound": "Wrong username",
   "Error.Passport.Email.NotFound": "Wrong email"
 }

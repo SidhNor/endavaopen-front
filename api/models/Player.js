@@ -8,9 +8,6 @@
 module.exports = {
 
   attributes: {
-    playerId: {
-      type: 'string'
-    },
     fullName: {
       type: 'string'
     },
