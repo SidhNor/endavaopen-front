@@ -30,11 +30,8 @@ module.exports = {
   host: process.env.OPENSHIFT_NODEJS_IP,
 
   session: {
-    adapter: 'mongo',
-    host: process.env.OPENSHIFT_MONGODB_DB_HOST,
-    port: process.env.OPENSHIFT_MONGODB_DB_PORT,
-    db: 'sails',
-    collection: 'sessions'
+    adapter: 'redis',
+    host: process.env.OPENSHIFT_NODEJS_IP
   }
 
   /***************************************************************************
