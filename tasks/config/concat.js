@@ -16,18 +16,16 @@ module.exports = function(gulp, plugins, growl) {
 				.pipe(plugins.concat('production.js'))
 				.pipe(plugins.rename({ suffix: '.min' }))
 				.pipe(plugins.uglify(/* {mangle: true} */))
-				.pipe(gulp.dest('./.tmp/public/concat'))
-				.pipe(plugins.if(growl, plugins.notify({ message: 'Concatenate Scripts task complete' })));
+				.pipe(gulp.dest('./.tmp/public/concat'));
 	});
-	
+
 	gulp.task('concat:css', function() {
 		return gulp.src(require('../pipeline').cssFilesToInject)
 				.pipe(plugins.autoprefixer('last 2 version', 'safari 5', 'ie 10', 'opera 12.1', 'ios 6', 'android 4'))
 				.pipe(plugins.concat('production.css'))
 				.pipe(plugins.rename({ suffix: '.min' }))
 				.pipe(plugins.minifyCss())
-				.pipe(gulp.dest('./.tmp/public/concat'))
-				.pipe(plugins.if(growl, plugins.notify({ message: 'Concatenate CSS task complete' })));
+				.pipe(gulp.dest('./.tmp/public/concat'));
 	});
 
 };

@@ -8,7 +8,6 @@ module.exports = function (gulp, plugins) {
 			'cssmin:dist',
 			'sails-linker-gulp:prodAssets',
 			'sails-linker-gulp:prodViews',
-      'images',
 			cb
 		);
 	});

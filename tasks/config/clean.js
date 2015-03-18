@@ -14,7 +14,6 @@ module.exports = function(gulp, plugins, growl) {
 	});
 	gulp.task('clean:build', function() {
 		return gulp.src(['www/**/*.*', 'www{,/**}'], {read: false})
-				.pipe(plugins.rimraf({ force: true }))
-				.pipe(plugins.if(growl, plugins.notify({ message: 'Clean task complete' })));
+				.pipe(plugins.rimraf({ force: true }));
 	});
 };

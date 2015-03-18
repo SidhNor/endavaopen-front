@@ -12,7 +12,6 @@ module.exports = function(gulp, plugins, growl) {
 		return gulp.src('.tmp/public/concat/production.css')
 				.pipe(plugins.rename({ suffix: '.min' }))
 				.pipe(plugins.minifyCss())
-				.pipe(gulp.dest('./.tmp/public/min'))
-				.pipe(plugins.if(growl, plugins.notify({ message: 'Minify CSS task complete' })));
+				.pipe(gulp.dest('./.tmp/public/min'));
 		});
 };

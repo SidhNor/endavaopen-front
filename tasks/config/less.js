@@ -18,7 +18,6 @@ module.exports = function(gulp, plugins, growl) {
 						ext: '.css'
 					})
 				)
-				.pipe(gulp.dest('.tmp/public/styles/'))
-				.pipe(plugins.if(growl, plugins.notify({ message: 'less dev task complete' })));
+				.pipe(gulp.dest('.tmp/public/styles/'));
 	});
 };

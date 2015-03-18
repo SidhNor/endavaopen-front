@@ -1,7 +1,5 @@
 {
   "dependencies": {
-    "gulp-bower": "*",
-    "main-bower-files": "*",
     "bcryptjs": "^2.1.0",
     "connect-mongo": "^0.7.0",
     "ejs": "~0.8.4",

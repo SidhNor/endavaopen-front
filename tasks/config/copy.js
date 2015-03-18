@@ -13,13 +13,11 @@
  */
 module.exports = function(gulp, plugins, growl) {
 	gulp.task('copy:dev', function() {
-		return gulp.src(['./assets/**/*.!(less)', '!assets/images{,/**}'])
-				.pipe(gulp.dest('.tmp/public'))
-				.pipe(plugins.if(growl, plugins.notify({ message: 'Copy dev task complete' })));
+		return gulp.src('./assets/**/*.!(less)')
+				.pipe(gulp.dest('.tmp/public'));
 	});
 	gulp.task('copy:build', function() {
 		return gulp.src('.tmp/public/**/*')
-				.pipe(gulp.dest('www'))
-				.pipe(plugins.if(growl, plugins.notify({ message: 'Copy build task complete' })));
+				.pipe(gulp.dest('www'));
 	});
 };
