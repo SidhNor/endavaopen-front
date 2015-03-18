@@ -7,7 +7,7 @@
  * sails project.
  *
  */
- var rimraf = require('rimraf');
+var rimraf = require('rimraf');
 module.exports = function(gulp, plugins, growl) {
 	gulp.task('clean:dev', function(cb) {
       return rimraf('.tmp/public', cb);
