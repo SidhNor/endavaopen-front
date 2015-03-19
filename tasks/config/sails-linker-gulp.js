@@ -212,5 +212,4 @@ module.exports = function(gulp, plugins, growl) {
             // Write modified files...
             .pipe(gulp.dest('views/'))
     });
-
 };
