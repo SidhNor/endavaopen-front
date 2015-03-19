@@ -37,9 +37,11 @@ module.exports = {
     password: process.env.OPENSHIFT_MONGODB_DB_PASSWORD,
     db: 'open',
     collection: 'sessions'
+  },
+
+  gulp: {
+    _hookTimeoout: 50000
   }
-
-
   /***************************************************************************
    * Set the log level in production environment to "silent"                 *
    ***************************************************************************/
