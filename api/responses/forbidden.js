@@ -20,6 +20,7 @@ module.exports = function forbidden (data, options) {
   var sails = req._sails;
 
   // Set status code
+  res.locals.layout = '';
   res.status(403);
 
   // Log error to console

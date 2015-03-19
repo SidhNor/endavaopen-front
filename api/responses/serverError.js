@@ -19,6 +19,7 @@ module.exports = function serverError (data, options) {
   var res = this.res;
   var sails = req._sails;
 
+  res.locals.layout = '';
   // Set status code
   res.status(500);
 
