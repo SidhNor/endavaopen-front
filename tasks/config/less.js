@@ -12,12 +12,14 @@ module.exports = function(gulp, plugins, growl) {
 
 	gulp.task('less:dev', function() {
 		return gulp.src('assets/styles/importer.less')
+        .pipe(plugins.sourcemaps.init())
 				.pipe(
 					plugins.less({
 						expand: true,
 						ext: '.css'
 					})
 				)
+        .pipe(plugins.sourcemaps.write())
 				.pipe(gulp.dest('.tmp/public/styles/'));
 	});
 };
