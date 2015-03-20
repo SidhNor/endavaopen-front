@@ -39,6 +39,7 @@
     "sails-disk": "~0.10.0",
     "sails-generate-auth": "^0.3.0",
     "sails-mongo": "~0.10.5",
+    "underscore": "^1.8.2",
     "validator": "^3.34.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^2.4.0"

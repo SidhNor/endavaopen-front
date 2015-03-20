@@ -25,6 +25,7 @@
 @import "node_modules/material-ui/src/less/components.less";
 
 @import "footer.less";
+@import "header.less";
 @import "layout/full-width-section.less";
 
 @import "pages/home-page-hero.less";
@@ -34,6 +35,20 @@
 .mui-app-canvas {
 
   height: 100%;
+  margin-top: -1px;
+
+  .open-menu {
+
+    .mui-tabs-container { display: none; }
+    .home-btn { display: none; }
+
+    @media @device-medium {
+      .mui-tabs-container { display: block; }
+      .home-btn { display: block; }
+      .menu-btn { display: none; }
+
+    }
+  }
 
   .mui-app-content-canvas {
     padding: 0;
@@ -49,4 +64,36 @@
       margin-right: -16px;
     }
   }
+}
+
+
+
+.example-enter {
+  transform: translateY(1200px);
+  transition: all 1.5s ease-in;
+}
+
+.example-enter.example-enter-active {
+  transform: translateY(0px);
+}
+
+.example-leave {
+  transform: translateY(0px);
+}
+
+.example-leave.example-leave-active {
+  transform: translateY(1200px);
+  transition: all 1.5s ease-in;
+}
+
+.bg-primary {
+  background: @primary-1-color;
+}
+
+.bg-primary2 {
+  background: @primary-2-color;
+}
+
+.bg-accent {
+  background: @accent-1-color;
 }
