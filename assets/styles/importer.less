@@ -35,7 +35,6 @@
 .mui-app-canvas {
 
   height: 100%;
-  margin-top: -1px;
 
   .open-menu {
 
@@ -58,32 +57,33 @@
     background: @primary-1-color;
   }
 
-  .mui-app-bar {
-    .github-icon-button {
-      float: right;
-      margin-right: -16px;
-    }
-  }
 }
 
 
 
 .example-enter {
-  transform: translateY(1200px);
-  transition: all 1.5s ease-in;
+  transform: translateY(100px);
+  opacity: 0;
+  will-change: transform, opacity;
+  transition: all .5s ease-in;
 }
 
 .example-enter.example-enter-active {
+  transition-delay: .5s;
   transform: translateY(0px);
+  opacity: 1;
 }
 
 .example-leave {
-  transform: translateY(0px);
+  transform: translateY(-100%);
+  opacity: 1;
 }
 
 .example-leave.example-leave-active {
-  transform: translateY(1200px);
-  transition: all 1.5s ease-in;
+  transform: translateY(100px);
+  opacity: 0;
+  will-change: transform, opacity;
+  transition: all .5s ease-in;
 }
 
 .bg-primary {
@@ -96,4 +96,39 @@
 
 .bg-accent {
   background: @accent-1-color;
+}
+
+.card-container {
+  z-index: 1;
+  background: #fff;
+
+  @media @device-medium {
+    max-width: 582px;
+    margin: 0 auto;
+  }
+
+  @media @device-large {
+    max-width: 704px;
+  }
+
+  @media @device-x-large {
+    max-width: 896px;
+  }
+
+  @media (min-width: 1264px) {
+    max-width: 1024px;
+  }
+}
+
+.card-content {
+  padding: 0 16px;
+
+  @media @device-medium {
+    padding: 32px;
+  }
+
+  @media @device-large {
+    padding: 32px 40px;
+  }
+
 }

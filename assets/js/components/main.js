@@ -21,18 +21,14 @@ var Main = React.createClass({
       <AppCanvas predefinedLayout={1} className={name + '-page'}>
         <AppLeftNav ref="leftNav" />
         <Header />
-        <TransitionGroup component="div" transitionName="example">
+        <TransitionGroup component="div" transitionName="example" style={{position: 'relative'}}>
           <RouteHandler key={name}/>
         </TransitionGroup>
         <Footer />
 
       </AppCanvas>
     );
-  },
-
-
-
-
+  }
 });
 
 module.exports = Main;

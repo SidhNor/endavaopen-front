@@ -16,10 +16,17 @@
     max-width: 944px;
     margin: 0 auto;
     position: relative;
-    padding: 10px 0 40px 0;
+    padding-left: 72px;
     display: flex;
     flex: 1;
-    align-items: flex-end;
+    align-items: flex-start;
+    flex-direction: column;
+
+    @media @device-medium {
+      padding: 0 0 170px 0;
+      flex-direction: row;
+      align-items: flex-end;
+    }
 
     @media @device-large {
       max-width: 896px;
@@ -38,6 +45,7 @@
   margin-bottom: 4px;
 
   @media @device-medium {
+    text-align: right;
     font-size: 24px;
     line-height: 28px;
   }
@@ -53,6 +61,7 @@
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
+  padding-top: 0;
 
   @media @device-medium {
     text-align: right;
@@ -72,6 +81,10 @@
     max-width: 704px;
     padding: 0 0 170px 0;
   }
+}
+
+.masthead-meta {
+  flex: 1;
 }
 
 /*

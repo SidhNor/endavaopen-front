@@ -42,7 +42,7 @@ var Header = React.createClass({
         <h4 className="masthead-subtitle">Niagara Fitness Center, <br/>Chisinau, MD </h4>
       </div>);
     } else {
-      mastheadContent = '<h1>About</h1>';
+      mastheadContent = <h1>About</h1>;
     }
 
 
@@ -84,7 +84,7 @@ var Header = React.createClass({
   },
 
   _onMenuIconButtonTouchTap: function() {
-    this.refs.leftNav.toggle();
+    this._owner.refs.leftNav.toggle();
   }
 
 });
