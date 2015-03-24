@@ -25,7 +25,7 @@ var AppLeftNav = React.createClass({
     var header = <div className="layout vertical bg-primary tall">
         <div className="logo"></div>
         <div className="bottom">
-          <div className="white">May 17-21, 2015</div>
+          <div className="white">May 15-17, 2015</div>
           <div>Chisinau, MD</div>
         </div>
       </div>;
