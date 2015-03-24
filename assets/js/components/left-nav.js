@@ -22,7 +22,14 @@ var AppLeftNav = React.createClass({
   },
 
   render: function() {
-    var header = <div className="logo">material ui</div>;
+    var header = <div className="layout vertical bg-primary tall">
+        <div className="logo"></div>
+        <div className="bottom">
+          <div className="white">May 17-21, 2015</div>
+          <div>Chisinau, MD</div>
+        </div>
+      </div>;
+
     return (
       <mui.LeftNav
         ref="leftNav"

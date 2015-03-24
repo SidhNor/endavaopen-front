@@ -1,6 +1,8 @@
 .masthead {
   position: relative;
   max-height: 550px;
+  display: flex;
+  flex-direction: column;
 
   @media @device-medium {
     position: relative;
@@ -21,6 +23,14 @@
     flex: 1;
     align-items: flex-start;
     flex-direction: column;
+
+    @media (max-width: 884px) and (min-width: 768px) {
+      max-width: 582px;
+    }
+
+    @media (min-width: 885px) {
+      max-width: 704px;
+    }
 
     @media @device-medium {
       padding: 0 0 170px 0;
@@ -74,7 +84,19 @@
   background: black;
   width: 177px;
   height: 128px;
+
+  &:after {
+    content: '';
+    display: none;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    position: absolute;
+    margin-left: -10px;
+    margin-top: -14px;
+  }
 }
+
 
 @media @device-medium {
   .masthead-container {
@@ -86,15 +108,3 @@
 .masthead-meta {
   flex: 1;
 }
-
-/*
-@media @device-medium {
-  .masthead {
-    position: relative;
-    margin-bottom: -115px;
-    min-height: 540px;
-    height: 540px;
-  }
-}
-*/
-

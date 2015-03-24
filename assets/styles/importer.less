@@ -27,12 +27,29 @@
 @import "footer.less";
 @import "header.less";
 @import "layout/full-width-section.less";
+@import "layout/flex-layouts.less";
 
 @import "pages/home-page-hero.less";
 
 
 /* App Specific Styles */
 .mui-app-canvas {
+
+  h1, h2, h4 {
+    font-family: 'Roboto', sans-serif;
+  }
+
+  h1 {
+    font-weight: 300;
+  }
+
+  h2 {
+    font-weight: 400;
+
+    @media @device-x-large {
+      font-weight: 300;
+    }
+  }
 
   height: 100%;
 
@@ -103,21 +120,25 @@
   background: #fff;
 
   @media @device-medium {
-    max-width: 582px;
+    max-width: 704px;
     margin: 0 auto;
   }
 
-  @media @device-large {
-    max-width: 704px;
+  @media (max-width: 884px) and (min-width: 768px) {
+    max-width: 582px;
   }
 
-  @media @device-x-large {
+  @media @device-large {
     max-width: 896px;
   }
 
-  @media (min-width: 1264px) {
+  @media @device-x-large {
     max-width: 1024px;
   }
+}
+
+.tall {
+  height: 192px;
 }
 
 .card-content {
