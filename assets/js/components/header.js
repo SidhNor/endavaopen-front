@@ -42,7 +42,7 @@ var Header = React.createClass({
         <h4 className="masthead-subtitle">Niagara Fitness Center,<br/>Chisinau, MD</h4>
       </div>);
     } else {
-      mastheadContent = <h1>About</h1>;
+      mastheadContent =<div className="masthead-meta"><h1>About</h1></div>;
     }
 
 

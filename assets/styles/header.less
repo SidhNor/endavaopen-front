@@ -18,7 +18,7 @@
     max-width: 944px;
     margin: 0 auto;
     position: relative;
-    padding-left: 72px;
+    padding: 10px 0 40px 72px;
     display: flex;
     flex: 1;
     align-items: flex-start;
@@ -107,4 +107,9 @@
 
 .masthead-meta {
   flex: 1;
+  @media (max-width: 768px) {
+    justify-content: flex-end;
+    display: flex;
+    flex-direction: column;
+  }
 }
