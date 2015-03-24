@@ -2,7 +2,7 @@ var React = require('react'),
   Router = require('react-router'),
   mui = require('material-ui'),
   menuItems = [
-    { route: 'home', text: 'Home' },
+    { route: 'root', text: 'Home' },
     { route: 'tournament', text: 'Tournament' },
     { route: 'consolation', text: 'Consolation Rounds' },
     { route: 'players', text: 'Players' },

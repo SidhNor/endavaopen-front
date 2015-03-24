@@ -17,8 +17,14 @@ var Main = React.createClass({
 
   render: function () {
     var name = this.getRoutes().slice(0).reverse()[0].name;
+    var cx = '';
+    if (name) {
+      cx = name + '-page';
+    } else {
+      cx = 'home-page';
+    }
     return (
-      <AppCanvas predefinedLayout={1} className={name + '-page'}>
+      <AppCanvas predefinedLayout={1} className={cx}>
         <AppLeftNav ref="leftNav" />
         <Header />
         <TransitionGroup component="div" transitionName="example" style={{position: 'relative'}}>

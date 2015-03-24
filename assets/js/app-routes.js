@@ -20,13 +20,12 @@ var Tournament = require('./components/pages/tournament');
 
 var AppRoutes = (
   <Route name="root" path="/" handler={Master}>
-    <Route name='home' handler={Home} addHandlerKey={true}/>
     <Route name="tournament" handler={Tournament} addHandlerKey={true}/>
     <Route name="consolation" handler={Tournament} addHandlerKey={true}/>
     <Route name="players" handler={Tournament} addHandlerKey={true}/>
     <Route name="rules" handler={Tournament} addHandlerKey={true}/>
     <Route name="about" handler={Tournament} addHandlerKey={true}/>
-    <DefaultRoute handler={Home} addHandlerKey={true}/>
+    <DefaultRoute handler={Home} addHandlerKey={true} name="home"/>
   </Route>
 );
 

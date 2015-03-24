@@ -76,7 +76,7 @@ var Header = React.createClass({
   },
 
   _onGoHomeTouchTap: function () {
-    this.transitionTo('home');
+    this.transitionTo('root');
   },
 
   _onActive: function (tab) {
