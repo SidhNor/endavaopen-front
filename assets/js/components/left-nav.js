@@ -52,7 +52,7 @@ var AppLeftNav = React.createClass({
     for (var i = menuItems.length - 1; i >= 0; i--) {
       currentItem = menuItems[i];
       if (currentItem.route && this.isActive(currentItem.route)) return i;
-    };
+    }
   },
 
   _onLeftNavChange: function(e, key, payload) {

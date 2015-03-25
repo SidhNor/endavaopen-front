@@ -3,7 +3,7 @@ var Router = require('react-router');
 var mui = require('material-ui');
 var Toolbar = mui.Toolbar;
 var ToolbarGroup = mui.ToolbarGroup;
-var Tabs = mui.Tabs;
+var Tabs = require('./controls/navtabs.js');
 var Tab = mui.Tab;
 var IconButton = mui.IconButton;
 var NavigationMenu = mui.Icons.NavigationMenu;
@@ -37,10 +37,12 @@ var Header = React.createClass({
 
     var mastheadContent;
     if (this.isActive('home')) {
-      mastheadContent = (<div className="masthead-meta">
-        <h2 className="masthead-title">May 15-17, 2015</h2>
-        <h4 className="masthead-subtitle">Niagara Fitness Center,<br/>Chisinau, MD</h4>
-      </div>);
+      mastheadContent = (
+        <div className="masthead-meta">
+          <h2 className="masthead-title">May 15-17, 2015</h2>
+          <h4 className="masthead-subtitle">Niagara Fitness Center,<br/>Chisinau, MD</h4>
+        </div>
+      );
     } else {
       mastheadContent =<div className="masthead-meta"><h1>About</h1></div>;
     }
@@ -57,9 +59,7 @@ var Header = React.createClass({
           </ToolbarGroup>
           <ToolbarGroup key={1} float="right">
             <Tabs>
-              <Tab label="Tournament"
-                route="tournament"
-                onActive={this._onActive} />
+              <Tab label="Tournament" route="tournament" onActive={this._onActive} />
               <Tab label="Consolation Rounds" route="consolation" onActive={this._onActive}/>
               <Tab label="Players" route="players" onActive={this._onActive}/>
               <Tab label="Rules" route="rules" onActive={this._onActive}/>
