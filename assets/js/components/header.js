@@ -30,9 +30,7 @@ var Header = React.createClass({
     var title = 'Endava Open';
 
     var homeBtn = !this.isActive('home') ? (
-      <IconButton touch={true} className="home-btn" onTouchTap={this._onGoHomeTouchTap}>
-        <NavigationMenu/>
-      </IconButton>
+      <IconButton className="home-btn" touch={true} onTouchTap={this._onGoHomeTouchTap} iconClassName="open-logo"/>
     ) : '';
 
     var mastheadContent;
@@ -68,7 +66,7 @@ var Header = React.createClass({
           </ToolbarGroup>
         </Toolbar>
         <div className="masthead-container">
-          <div className="open-logo"/>
+          <div className="open-logo large"/>
           {mastheadContent}
         </div>
       </header>
