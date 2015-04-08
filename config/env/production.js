@@ -45,6 +45,10 @@ module.exports = {
 
   orm: {
     _hookTimeout: 50000
+  },
+
+  views: {
+    _hookTimeout: 50000
   }
 
 
