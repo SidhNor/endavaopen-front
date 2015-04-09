@@ -49,6 +49,10 @@ module.exports = {
 
   views: {
     _hookTimeout: 50000
+  },
+
+  pubsub: {
+    _hookTimeout: 50000
   }
 
 
