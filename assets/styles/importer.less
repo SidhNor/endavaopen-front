@@ -30,6 +30,7 @@
 @import "layout/flex-layouts.less";
 
 @import "pages/home-page-hero.less";
+@import "pages/schedule-page.less";
 
 /* App Specific Styles */
 body {
@@ -200,15 +201,38 @@ body {
 .card-content {
   padding: 0 16px;
 
+  h4 {
+    font-size: 20px;
+    line-height: 32px;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+  }
+
+  @media (max-width: 767px) {
+    padding: 24px 16px;
+
+    /*&:not(:only-child):first-child {
+      padding-bottom: 0;
+    }*/
+    &:first-child {
+      padding: 16px;
+      border-bottom: 1px solid #eee;
+    }
+  }
+
   @media @device-medium {
     padding: 32px;
+    &:not(:last-child) {
+      border-bottom: 1px solid #eee;
+    }
   }
 
   @media @device-large {
     padding: 32px 40px;
   }
-
 }
+
 
 .page-section {
   padding-top: 0;

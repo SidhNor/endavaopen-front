@@ -45,7 +45,7 @@ var Header = React.createClass({
         </div>
       );
     } else {
-      mastheadContent =<div className="masthead-meta"><h1>About</h1></div>;
+      mastheadContent =<div className="masthead-meta"><h1>{this.getRoutes().slice(0).reverse()[0].name}</h1></div>;
     }
 
 
@@ -61,10 +61,10 @@ var Header = React.createClass({
           <ToolbarGroup key={1} float="right">
             <Tabs>
               <Tab label="Tournament" route="tournament" onActive={this._onActive} />
-              <Tab label="Consolation Rounds" route="consolation" onActive={this._onActive}/>
+              <Tab label="Schedule" route="schedule" onActive={this._onActive} />
+              <Tab label="Doubles" route="doubles" onActive={this._onActive}/>
               <Tab label="Players" route="players" onActive={this._onActive}/>
               <Tab label="Rules" route="rules" onActive={this._onActive}/>
-              <Tab label="About" route="about" onActive={this._onActive}/>
             </Tabs>
           </ToolbarGroup>
         </Toolbar>

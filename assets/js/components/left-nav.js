@@ -4,7 +4,8 @@ var React = require('react'),
   menuItems = [
     { route: 'root', text: 'Home' },
     { route: 'tournament', text: 'Tournament' },
-    { route: 'consolation', text: 'Consolation Rounds' },
+    { route: 'schedule', text: 'Schedule' },
+    { route: 'doubles', text: 'Doubles' },
     { route: 'players', text: 'Players' },
     { route: 'rules', text: 'Rules' },
     { route: 'about', text: 'About' }

@@ -5,11 +5,12 @@ var Paper = mui.Paper;
 var Card = React.createClass({
 
   render: function () {
+    var childItems = React.Children.map(this.props.children, function(cardContent, index) {
+      return <div className="card-content">{cardContent}</div>;
+    });
     return (
       <Paper zDepth={2} className="card-container">
-        <div className="card-content" style={{height: 500}}>
-        {this.props.children}
-        </div>
+        {childItems}
       </Paper>
     );
   }

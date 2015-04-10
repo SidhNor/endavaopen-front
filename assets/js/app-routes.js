@@ -5,8 +5,9 @@ var Redirect = Router.Redirect;
 var DefaultRoute = Router.DefaultRoute;
 
 var Master = require('./components/main.js');
-var Home = require('./components/pages/home.js');
+var Home = require('./components/pages/home');
 var Tournament = require('./components/pages/tournament');
+var Schedule = require('./components/pages/schedule');
 
 
 /** Routes: https://github.com/rackt/react-router/blob/master/docs/api/components/Route.md
@@ -21,10 +22,10 @@ var Tournament = require('./components/pages/tournament');
 var AppRoutes = (
   <Route name="root" path="/" handler={Master}>
     <Route name="tournament" handler={Tournament} addHandlerKey={true}/>
-    <Route name="consolation" handler={Tournament} addHandlerKey={true}/>
+    <Route name="doubles" handler={Tournament} addHandlerKey={true}/>
     <Route name="players" handler={Tournament} addHandlerKey={true}/>
+    <Route name="schedule" handler={Schedule} addHandlerKey={true}/>
     <Route name="rules" handler={Tournament} addHandlerKey={true}/>
-    <Route name="about" handler={Tournament} addHandlerKey={true}/>
     <DefaultRoute handler={Home} addHandlerKey={true} name="home"/>
   </Route>
 );
