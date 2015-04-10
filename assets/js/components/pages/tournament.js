@@ -7,7 +7,9 @@ var TournamentPage = React.createClass({
   render: function () {
     return (
       <div className="mui-app-content-canvas">
-        <Card>Tournament</Card>
+        <section className="page-section">
+          <Card>Tournament</Card>
+        </section>
       </div>
     );
   }

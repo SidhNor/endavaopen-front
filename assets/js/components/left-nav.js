@@ -10,6 +10,8 @@ var React = require('react'),
     { route: 'about', text: 'About' }
   ];
 
+var OpenLogo = require('./controls/open-logo.js')
+
 
 var AppLeftNav = React.createClass({
 
@@ -23,9 +25,12 @@ var AppLeftNav = React.createClass({
 
   render: function() {
     var header = <div className="layout vertical bg-primary tall">
-        <div className="logo"></div>
+        <div className="logo">
+          <OpenLogo/>
+          <span>Spring 2015</span>
+        </div>
         <div className="bottom">
-          <div className="white">May 15-17, 2015</div>
+          <div>May 15 - 17, 2015</div>
           <div>Chisinau, MD</div>
         </div>
       </div>;

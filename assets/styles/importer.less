@@ -31,8 +31,14 @@
 
 @import "pages/home-page-hero.less";
 
-
 /* App Specific Styles */
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
 .mui-app-canvas {
 
   h1, h2, h4 {
@@ -113,6 +119,13 @@
 
 .bg-primary {
   background: @primary-1-color;
+  color: white;
+  h1 {
+    color: white;
+  }
+  .mui-svg-icon * {
+    fill: white;
+  }
 }
 
 .bg-primary2 {
@@ -149,6 +162,41 @@
   height: 192px;
 }
 
+/*Left nav stuff*/
+
+.mui-left-nav-menu {
+  font-weight: 500;
+
+  .logo {
+    flex: 1;
+    display: flex;
+
+    span {
+      color: white;
+      font-size: 18px;
+      align-self: flex-start;
+      line-height: 50px;
+      padding-left: 10px;
+    }
+  }
+  .open-logo {
+    width: 40px;
+    height: 40px;
+    margin: 0 8px;
+  }
+
+  .bottom {
+    margin: 0 8px;
+    color: white;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .tall {
+    padding: 12px 8px;
+  }
+}
+
 .card-content {
   padding: 0 16px;
 
@@ -161,3 +209,18 @@
   }
 
 }
+
+.page-section {
+  padding-top: 0;
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: 16px;
+
+  @media @device-medium {
+    padding-bottom: 32px;
+  }
+}
+
+.st1{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;}
+.st2{fill-rule:evenodd;clip-rule:evenodd;fill:#F58220;}
+

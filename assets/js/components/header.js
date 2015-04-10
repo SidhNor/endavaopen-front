@@ -6,6 +6,7 @@ var ToolbarGroup = mui.ToolbarGroup;
 var Tabs = require('./controls/navtabs.js');
 var Tab = mui.Tab;
 var IconButton = mui.IconButton;
+var OpenLogo = require('./controls/open-logo.js')
 var NavigationMenu = mui.Icons.NavigationMenu;
 
 var Header = React.createClass({
@@ -30,14 +31,16 @@ var Header = React.createClass({
     var title = 'Endava Open';
 
     var homeBtn = !this.isActive('home') ? (
-      <IconButton className="home-btn" touch={true} onTouchTap={this._onGoHomeTouchTap} iconClassName="open-logo"/>
+      <IconButton className="home-btn" touch={true} onTouchTap={this._onGoHomeTouchTap}>
+        <OpenLogo/>
+      </IconButton>
     ) : '';
 
     var mastheadContent;
     if (this.isActive('home')) {
       mastheadContent = (
         <div className="masthead-meta">
-          <h2 className="masthead-title">May 15-17, 2015</h2>
+          <h2 className="masthead-title">May 15 - 17, 2015</h2>
           <h4 className="masthead-subtitle">Niagara Fitness Center,<br/>Chisinau, MD</h4>
         </div>
       );
@@ -66,7 +69,7 @@ var Header = React.createClass({
           </ToolbarGroup>
         </Toolbar>
         <div className="masthead-container">
-          <div className="open-logo large"/>
+          <OpenLogo className="open-logo large"/>
           {mastheadContent}
         </div>
       </header>

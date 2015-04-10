@@ -24,6 +24,10 @@
     align-items: flex-start;
     flex-direction: column;
 
+    .open-logo {
+      display: none;
+    }
+
     @media (max-width: 884px) and (min-width: 768px) {
       max-width: 582px;
     }
@@ -49,7 +53,7 @@
 }
 
 .masthead-title {
-  color: @accent-1-color;
+  color: #fff;
   font-size: 20px;
   line-height: 24px;
   margin-bottom: 4px;
@@ -67,7 +71,7 @@
 }
 
 .masthead-subtitle {
-  color: #455A64;
+  color: #ccc;
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
@@ -80,8 +84,8 @@
 }
 
 .home-btn {
-  width: 56px;
-  height: 56px;
+  width: 48px;
+  height: 48px;
   padding: 6px;
   .open-logo {
     display: block;
@@ -89,13 +93,8 @@
 }
 
 .open-logo {
-  display: none;
-  background-image: url('../images/open-logo.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 100%;
-  width: 44px;
-  height: 44px;
+  width: 36px;
+  height: 36px;
 
   &:after {
     content: '';
@@ -123,5 +122,11 @@
     justify-content: flex-end;
     display: flex;
     flex-direction: column;
+  }
+}
+
+.mui-tabs-container {
+  .mui-tab-item-container {
+    background: @primary-1-color;
   }
 }

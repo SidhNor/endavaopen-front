@@ -8,7 +8,9 @@ var HomePage = React.createClass({
   render: function () {
     return (
       <div className="mui-app-content-canvas">
-        <Card>Home</Card>
+        <section className="page-section">
+          <Card>Home</Card>
+        </section>
         /*<div className="home-page-hero full-width-section">
           <div className="home-page-hero-content">
             <h1 className="brand-name">Endava Open 11 edition</h1>
