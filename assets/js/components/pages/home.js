@@ -9,14 +9,13 @@ var HomePage = React.createClass({
     return (
       <div className="mui-app-content-canvas">
         <section className="page-section">
-          <Card>Home</Card>
+          <Card>
+            <h3>
+              Endava Open is always magical and this year will be same again.
+            </h3>
+            <p>Get ready to take part in what will be the 11th edition of the Endava Tennis Tournament.</p>
+          </Card>
         </section>
-        /*<div className="home-page-hero full-width-section">
-          <div className="home-page-hero-content">
-            <h1 className="brand-name">Endava Open 11 edition</h1>
-          </div>
-        </div>
-        */
       </div>
     );
   }
