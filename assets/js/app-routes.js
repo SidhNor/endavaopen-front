@@ -8,7 +8,8 @@ var Master = require('./components/main.js');
 var Home = require('./components/pages/home');
 var Tournament = require('./components/pages/tournament');
 var Schedule = require('./components/pages/schedule');
-
+var Rules = require('./components/pages/rules');
+var Players = require('./components/pages/players');
 
 /** Routes: https://github.com/rackt/react-router/blob/master/docs/api/components/Route.md
  *
@@ -23,9 +24,9 @@ var AppRoutes = (
   <Route name="root" path="/" handler={Master}>
     <Route name="tournament" handler={Tournament} addHandlerKey={true}/>
     <Route name="doubles" handler={Tournament} addHandlerKey={true}/>
-    <Route name="players" handler={Tournament} addHandlerKey={true}/>
+    <Route name="players" handler={Players} addHandlerKey={true}/>
     <Route name="schedule" handler={Schedule} addHandlerKey={true}/>
-    <Route name="rules" handler={Tournament} addHandlerKey={true}/>
+    <Route name="rules" handler={Rules} addHandlerKey={true}/>
     <DefaultRoute handler={Home} addHandlerKey={true} name="home"/>
   </Route>
 );

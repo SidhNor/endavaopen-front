@@ -1,0 +1,30 @@
+.rules-page {
+
+  dl>* {
+    margin-bottom: 24px;
+  }
+
+  dt {
+    float: left;
+    clear: left;
+    width: 120px;
+
+    @media @device-medium {
+      width: 200px;
+    }
+
+    &:after {
+      content: ":";
+    }
+  }
+
+  dd {
+    margin-left: 130px;
+    font-weight: bold;
+
+    @media @device-medium {
+      margin-left: 210px;
+    }
+
+  }
+}
