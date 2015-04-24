@@ -11,7 +11,7 @@ var HomePage = React.createClass({
         <section className="page-section">
           <Card>
             <h3>
-              Endava Open is always magical and this year will be same again.
+              Endava Open is always magical and this year will be no different.
             </h3>
             <p>Get ready to take part in what will be the 11th edition of the Endava Tennis Tournament.</p>
           </Card>

@@ -95,24 +95,26 @@ body {
 
 .example-enter {
   transform: translateY(100px);
+  position: absolute;
   opacity: 0;
-  will-change: transform, opacity;
+  will-change: transform, opacity, position;
   transition: all .5s ease-in;
 }
 
 .example-enter.example-enter-active {
   transition-delay: .5s;
+  position: relative;
   transform: translateY(0px);
   opacity: 1;
 }
 
 .example-leave {
-  transform: translateY(-100%);
+  transform: translateY(0%);
   opacity: 1;
 }
 
 .example-leave.example-leave-active {
-  transform: translateY(100px);
+  transform: translateY(200px);
   opacity: 0;
   will-change: transform, opacity;
   transition: all .5s ease-in;
