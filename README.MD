@@ -1,6 +1,18 @@
 ## Description
 Endava Open is a website that exposes REST Api, as well as provides an isomorphic responsive front end for the 2015 tennis event organized by Endava Chisinau
 
+## Project structure
+[Sails](sailsjs.org) is used as an MVC framework backed up by [Waterline](https://github.com/balderdashy/waterline) ORM communicating with MongoDB
+
+Front end part of the app is driven by [ReactJS](https://facebook.github.io/react/), [Material-UI for react](https://github.com/callemall/material-ui)
+
+- assets : Directory with React SPA 
+ - js
+ - styles
+- views : Directory with server-side views and layouts
+- config: Configuration directory
+- api   : Rest API blueprints, Models, controllers, etc
+ 
 ## Installation &nbsp;
 
 **With [node](http://nodejs.org) [installed](http://sailsjs.org/#!documentation/new-to-nodejs):**
