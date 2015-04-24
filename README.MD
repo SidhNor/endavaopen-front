@@ -12,7 +12,7 @@ $ npm install sails -g
 $ npm install
 ```
 
-**Start up the server
+**Start up the server**
 ```sh
 $ sails lift
 ```
