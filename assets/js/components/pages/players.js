@@ -5,6 +5,7 @@ var Reflux = require('reflux');
 var Router = require('react-router');
 var mui = require('material-ui');
 var Card = require('../controls/card');
+var PageTransitionMixin = require('../controls/pagetransition-mixin');
 
 var actions    = require('../../actions/actions');
 var playersStore = require('../../stores/playersStore');
@@ -13,7 +14,8 @@ var PlayersPage = React.createClass({
 
   mixins: [
     Router.Navigation,
-    Reflux.listenTo(playersStore, 'onStoreUpdate')
+    Reflux.listenTo(playersStore, 'onStoreUpdate'),
+    PageTransitionMixin
   ],
 
   statics: {
@@ -23,21 +25,23 @@ var PlayersPage = React.createClass({
   },
 
   getInitialState: function() {
+    var playersData = playersStore.getDefaultData();
     return {
       loading: true,
-      players: []
-    }
+      players: playersData
+    };
   },
 
   render: function () {
     var players = this.state.players;
 
     players = players.map(function(player) {
-      return <Card key={player.id}>Player</Card>
+      return  <section className="page-section"><Card key={player.id}><h3>Player</h3></Card></section>
     });
 
+    var classes = React.addons.classSet(this.getCurrentAnimClasses(), 'mui-app-content-canvas');
     return (
-      <div className="mui-app-content-canvas">
+      <div className={classes}>
         <section className="page-section">
           {this.state.loading ? <div>Loading</div> : players}
         </section>

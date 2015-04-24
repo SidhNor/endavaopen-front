@@ -3,11 +3,19 @@ var Router = require('react-router');
 var mui = require('material-ui');
 var Card = require('../controls/card');
 var ScheduleIcon = require('../controls/schedule-icon');
+var PageTransitionMixin = require('../controls/pagetransition-mixin');
 
 var SchedulePage = React.createClass({
+
+  mixins: [
+    PageTransitionMixin
+  ],
+
   render: function () {
+    var classes = React.addons.classSet(this.getCurrentAnimClasses(), 'mui-app-content-canvas');
+
     return (
-      <div className="mui-app-content-canvas">
+      <div className={classes}>
         <section className="page-section">
           <Card>
             <h4>Friday, May 15</h4>

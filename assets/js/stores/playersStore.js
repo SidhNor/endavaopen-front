@@ -19,7 +19,10 @@ var playersStore = Reflux.createStore({
     setTimeout(function() {
       me.trigger([{id: "12"}, {id: "124"}]);
     }, 2000);
+  },
 
+  getDefaultData: function() {
+    return this.players;
   }
 });
 

@@ -103,31 +103,51 @@ html {
 
 }
 
-.example-enter {
-  transform: translateY(100px);
-  position: absolute;
+.fade-in-enter {
   opacity: 0;
-  will-change: transform, opacity, position;
-  transition: all .5s ease-in;
+  will-change: opacity;
 }
 
-.example-enter.example-enter-active {
-  transition-delay: .5s;
+.fade-in-enter.fade-in-enter-active {
+  opacity: 1;
+  transition: all 500ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.stepped-enter .card-container,
+.stepped-enter .onsite-pic {
+  transform: translateY(100px);
+  opacity: 0;
+  will-change: transform, opacity;
+  transition: all 500ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.stepped-enter.stepped-enter-active .card-container,
+.stepped-enter.stepped-enter-active .onsite-pic {
   position: relative;
   transform: translateY(0px);
   opacity: 1;
 }
 
-.example-leave {
+.stepped-enter.stepped-enter-active .onsite-pic {
+  transition-delay: 150ms;
+}
+
+.stepped-leave .card-container,
+.stepped-leave .onsite-pic {
   transform: translateY(0%);
   opacity: 1;
 }
 
-.example-leave.example-leave-active {
-  transform: translateY(200px);
+.stepped-leave.stepped-leave-active .card-container,
+.stepped-leave.stepped-leave-active .onsite-pic {
+  transform: translateY(100px);
   opacity: 0;
   will-change: transform, opacity;
-  transition: all .5s ease-in;
+  transition: all 500ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.stepped-leave.stepped-leave-active .card-container {
+  transition-delay: 150ms;
 }
 
 .bg-primary {

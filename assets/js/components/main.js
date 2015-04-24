@@ -4,10 +4,7 @@ var RouteHandler = Router.RouteHandler;
 var mui = require('material-ui');
 var Footer = require('./footer.js');
 var Header = require('./header.js');
-var AppBar = mui.AppBar;
-var IconButton = mui.IconButton;
 var AppCanvas = mui.AppCanvas;
-var NavigationMenu = mui.Icons.NavigationMenu;
 var AppLeftNav = require('./left-nav.js');
 var TransitionGroup = require('react/lib/ReactCSSTransitionGroup');
 
@@ -17,19 +14,18 @@ var Main = React.createClass({
 
   render: function () {
     var name = this.getRoutes().slice(0).reverse()[0].name;
-    var cx = '';
+    var pageCx = '';
     if (name) {
-      cx = name + '-page';
+      pageCx = name + '-page';
     } else {
-      cx = 'home-page';
+      pageCx = 'home-page';
     }
+
     return (
-      <AppCanvas predefinedLayout={1} className={cx}>
+      <AppCanvas predefinedLayout={1} className={pageCx}>
         <AppLeftNav ref="leftNav" />
-        <Header />
-        <TransitionGroup component="div" transitionName="example" style={{position: 'relative'}}>
-          <RouteHandler key={name}/>
-        </TransitionGroup>
+        <Header currentPage={name}/>
+        <RouteHandler key={name}/>
         <Footer />
 
       </AppCanvas>

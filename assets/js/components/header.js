@@ -13,18 +13,36 @@ var Header = React.createClass({
 
   mixins: [Router.Navigation, Router.State],
 
-  propTypes: {
-
-  },
-
   getInitialState: function(){
     var selectedIndex = 0;
     if (this.props.initialSelectedIndex && this.props.initialSelectedIndex < this.props.children.length) {
       selectedIndex = this.props.initialSelectedIndex;
     }
     return {
-      selectedIndex: selectedIndex
+      selectedIndex: selectedIndex,
+      entering: false,
+      enteringActive: false
     };
+  },
+
+
+  componentDidUpdate: function componentDidMount() {
+    if (this.animSequenceActive) {
+      return
+    }
+    var me = this;
+
+    me.animSequenceActive = true;
+    me.setState({entering: true });
+
+    setTimeout(function() {
+      me.setState({enteringActive: true});
+    }, 1);
+
+    setTimeout(function() {
+      me.setState({entering: false, enteringActive: false});
+      me.animSequenceActive = false;
+    }, 650);
   },
 
   render: function () {
@@ -45,9 +63,14 @@ var Header = React.createClass({
         </div>
       );
     } else {
-      mastheadContent =<div className="masthead-meta"><h1>{this.getRoutes().slice(0).reverse()[0].name}</h1></div>;
+      mastheadContent = <div className="masthead-meta"><h1>{this.getRoutes().slice(0).reverse()[0].name}</h1></div>;
     }
 
+    var mstHdCntCx = React.addons.classSet({
+      'masthead-container': true,
+      'fade-in-enter': this.state.entering,
+      'fade-in-enter-active': this.state.entering && this.state.enteringActive
+    });
 
     return (
       <header className="masthead bg-primary">
@@ -68,7 +91,7 @@ var Header = React.createClass({
             </Tabs>
           </ToolbarGroup>
         </Toolbar>
-        <div className="masthead-container">
+        <div className={mstHdCntCx}>
           <OpenLogo className="open-logo large"/>
           {mastheadContent}
         </div>
