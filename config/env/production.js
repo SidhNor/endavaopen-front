@@ -40,28 +40,28 @@ module.exports = {
   },
 
   gulp: {
-    _hookTimeout: 50000
+    _hookTimeout: 80000
   },
 
   orm: {
-    _hookTimeout: 50000
+    _hookTimeout: 80000
   },
 
   views: {
-    _hookTimeout: 50000
+    _hookTimeout: 80000
   },
 
   pubsub: {
-    _hookTimeout: 50000
-  }
+    _hookTimeout: 80000
+  },
 
 
   /***************************************************************************
    * Set the log level in production environment to "silent"                 *
    ***************************************************************************/
 
-  // log: {
-  //   level: "silent"
-  // }
+  log: {
+    level: "silent"
+  }
 
 };
