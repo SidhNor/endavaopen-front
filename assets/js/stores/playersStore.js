@@ -10,15 +10,11 @@ var playersStore = Reflux.createStore({
 
   init: function() {
     this.players = [];
+    actions.getPlayers()
   },
 
-  getPlayers: function() {
-    //Request players
-    //As soon as they arrive
-    var me = this;
-    setTimeout(function() {
-      me.trigger([{id: "12"}, {id: "124"}]);
-    }, 2000);
+  deliverPlayers: function(players) {
+    this.trigger(players);
   },
 
   getDefaultData: function() {

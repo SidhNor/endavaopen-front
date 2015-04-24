@@ -5,6 +5,7 @@ var Reflux = require('reflux');
 var Router = require('react-router');
 var mui = require('material-ui');
 var Card = require('../controls/card');
+var PlayerCard = require('../controls/playercard');
 var PageTransitionMixin = require('../controls/pagetransition-mixin');
 
 var actions    = require('../../actions/actions');
@@ -35,9 +36,13 @@ var PlayersPage = React.createClass({
   render: function () {
     var players = this.state.players;
 
-    players = players.map(function(player) {
-      return  <section className="page-section"><Card key={player.id}><h3>Player</h3></Card></section>
-    });
+    if (players.length == 0) {
+      players = <section className="page-section"><Card><h3>There are no players registered for the tournament</h3></Card></section>
+    } else {
+      players = players.map(function(player) {
+        return  <section className="page-section"><PlayerCard key={player.id} player={player}></PlayerCard></section>
+      });
+    }
 
     var classes = React.addons.classSet(this.getCurrentAnimClasses(), 'mui-app-content-canvas');
     return (

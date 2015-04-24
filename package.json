@@ -35,6 +35,7 @@
     "react-tap-event-plugin": "^0.1.4",
     "reactify": "^1.1.0",
     "reflux": "^0.2.7",
+    "request-promise": "^0.4.2",
     "rimraf": "*",
     "run-sequence": "1.0.0",
     "sails": "~0.11.0",
