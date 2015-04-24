@@ -1,7 +1,7 @@
 'use strict';
 
 var Reflux = require('reflux');
-var PlayerApi = require('../api/playerapi');
+var PlayerApi = require('../api/player-api');
 
 var actions = Reflux.createActions([
   'getPlayers',
