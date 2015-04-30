@@ -7,8 +7,19 @@
 
 module.exports = {
 
+  identity: 'score',
   attributes: {
-
+    set1: {
+      type: 'string'
+    },
+    set2: {
+      type: 'string'
+    },
+    set3: {
+      type: 'string'
+    },
+    summary: {
+      type: 'string'
+    }
   }
 };
-

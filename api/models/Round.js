@@ -7,10 +7,10 @@
 
 module.exports = {
 
+  identity: 'round',
+
   attributes: {
-    roundId: {
-      type: 'string'
-    },
+
     name: {
       type: 'string'
     },
@@ -19,7 +19,22 @@ module.exports = {
     },
     precedence: {
       type: 'integer'
+    },
+
+    tournament: {
+      model: 'tournament'
+    },
+
+    matches: {
+      collection: 'match',
+      via: 'round'
+    },
+
+    doubleMatches: {
+      collection: 'doublematch',
+      via: 'round'
     }
+
   }
 };
 

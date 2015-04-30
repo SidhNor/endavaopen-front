@@ -7,6 +7,8 @@
 
 module.exports = {
 
+  identity: 'player',
+
   attributes: {
     fullName: {
       type: 'string'

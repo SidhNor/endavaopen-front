@@ -84,8 +84,8 @@ var Header = React.createClass({
           <ToolbarGroup key={1} float="right">
             <Tabs>
               <Tab label="Tournament" route="tournament" onActive={this._onActive} />
-              <Tab label="Schedule" route="schedule" onActive={this._onActive} />
               <Tab label="Doubles" route="doubles" onActive={this._onActive}/>
+              <Tab label="Schedule" route="schedule" onActive={this._onActive} />
               <Tab label="Players" route="players" onActive={this._onActive}/>
               <Tab label="Rules" route="rules" onActive={this._onActive}/>
             </Tabs>

@@ -7,10 +7,9 @@
 
 module.exports = {
 
+  identity: 'match',
+
   attributes: {
-    matchId: {
-      type: 'string'
-    },
     date: {
       type: 'date'
     },
@@ -21,11 +20,18 @@ module.exports = {
     score: {
       model: 'Score'
     },
+
     player1: {
       model: 'Player'
     },
+
     player2: {
       model: 'Player'
+    },
+
+    //FK to round
+    round: {
+      model: 'round'
     }
 
   }

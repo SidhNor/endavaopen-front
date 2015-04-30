@@ -4,11 +4,10 @@ var React = require('react'),
   menuItems = [
     { route: 'root', text: 'Home' },
     { route: 'tournament', text: 'Tournament' },
-    { route: 'schedule', text: 'Schedule' },
     { route: 'doubles', text: 'Doubles' },
+    { route: 'schedule', text: 'Schedule' },
     { route: 'players', text: 'Players' },
-    { route: 'rules', text: 'Rules' },
-    { route: 'about', text: 'About' }
+    { route: 'rules', text: 'Rules' }
   ];
 
 var OpenLogo = require('./controls/open-logo.js')

@@ -7,6 +7,8 @@
 
 module.exports = {
 
+  identity: 'tournament',
+
   attributes: {
     tournamentId: {
       type: 'string'
@@ -16,6 +18,10 @@ module.exports = {
     },
     started: {
       type: 'boolean'
+    },
+    rounds: {
+      collection: 'round',
+      via: 'tournament'
     }
   }
 };
