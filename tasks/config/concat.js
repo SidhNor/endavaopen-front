@@ -21,7 +21,6 @@ module.exports = function(gulp, plugins, growl) {
 
 	gulp.task('concat:css', function() {
 		return gulp.src(require('../pipeline').cssFilesToInject)
-				.pipe(plugins.autoprefixer('last 2 version', 'safari 5', 'ie 10', 'opera 12.1', 'ios 6', 'android 4'))
 				.pipe(plugins.concat('production.css'))
 				.pipe(plugins.rename({ suffix: '.min' }))
 				.pipe(plugins.minifyCss())

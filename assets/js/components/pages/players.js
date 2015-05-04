@@ -6,6 +6,7 @@ var Router = require('react-router');
 var mui = require('material-ui');
 var Card = require('../controls/card');
 var PlayerCard = require('../controls/playercard');
+var Spinner = require('../controls/spinner');
 var PageTransitionMixin = require('../controls/pagetransition-mixin');
 
 var actions    = require('../../actions/actions');
@@ -40,16 +41,15 @@ var PlayersPage = React.createClass({
       players = <section className="page-section"><Card><h3>There are no players registered for the tournament</h3></Card></section>
     } else {
       players = players.map(function(player) {
-        return  <section className="page-section"><PlayerCard key={player.id} player={player}></PlayerCard></section>
+        return  <section className="page-section" key={player.id}><PlayerCard player={player}></PlayerCard></section>
       });
     }
 
     var classes = React.addons.classSet(this.getCurrentAnimClasses(), 'mui-app-content-canvas');
+    var loadingInd = <section className="page-section"><Card><Spinner></Spinner></Card></section>;
     return (
       <div className={classes}>
-        <section className="page-section">
-          {this.state.loading ? <div>Loading</div> : players}
-        </section>
+          {this.state.loading ? loadingInd : players}
       </div>
     )
   },
