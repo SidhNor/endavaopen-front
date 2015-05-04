@@ -11,7 +11,7 @@ var InkBar = React.createClass({
     var styles = {
       left: this.props.left,
       width: this.props.width
-    }
+    };
 
     return (
       <div className='mui-ink-bar' style={styles}>

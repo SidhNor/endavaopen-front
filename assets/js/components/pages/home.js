@@ -1,8 +1,10 @@
 var React = require('react');
 var Router = require('react-router');
 var mui = require('material-ui');
+var FlatButton = mui.FlatButton;
 var Card = require('../controls/card.js');
 var PageTransitionMixin = require('../controls/pagetransition-mixin');
+var CountDown = require('../controls/countdown');
 
 var HomePage = React.createClass({
 
@@ -23,6 +25,20 @@ var HomePage = React.createClass({
           </div>
         </Card>
         <section className="onsite-pic"></section>
+        <section className="open-begins layout flex vertical">
+          <h2>Endava Open begins May 15 10:00 AM EEST</h2>
+          <CountDown/>
+        </section>
+        <div className="layout flex sidebyside">
+          <Card className="flex">SomeStuff</Card>
+          <Card className="flex" fullScreenFirst={true}>
+            <div className="card-photo drawing flex"></div>
+            <div>
+              <img className="play-button" src="images/play-video-button.png" alt="2014 drawing"/>
+              <FlatButton link={true} primary={true} label="Watch the 2014 Endava Open Drawing"/>
+            </div>
+          </Card>
+        </div>
       </div>
     );
   }

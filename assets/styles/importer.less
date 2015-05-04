@@ -31,6 +31,7 @@
 
 @import "components/loading.less";
 @import "components/playercard.less";
+@import "components/countdown.less";
 
 @import "pages/home-page-hero.less";
 @import "pages/schedule-page.less";
@@ -192,6 +193,31 @@ html {
 
   @media @device-x-large {
     max-width: 1024px;
+  }
+}
+
+.sidebyside {
+  @media @device-medium {
+    max-width: 704px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 884px) and (min-width: 768px) {
+    max-width: 582px;
+  }
+
+  @media @device-large {
+    max-width: 896px;
+  }
+
+  @media @device-x-large {
+    max-width: 1024px;
+  }
+
+  &>:not(:last-child) {
+    @media @device-medium {
+      margin-right: 32px;
+    }
   }
 }
 
