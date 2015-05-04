@@ -57,6 +57,7 @@ var AuthController = {
     });
 
     // Render the `auth/login.ext` view
+    res.locals.layout = 'layouts/adminlayout';
     res.view({
       providers : providers
     , errors    : req.flash('error')
@@ -102,6 +103,7 @@ var AuthController = {
    * @param {Object} res
    */
   register: function (req, res) {
+    res.locals.layout = 'layouts/adminlayout';
     res.view({
       errors: req.flash('error')
     });
@@ -176,11 +178,11 @@ var AuthController = {
         }
 
         // Mark the session as authenticated to work with default Sails sessionAuth.js policy
-        req.session.authenticated = true
+        req.session.authenticated = true;
 
         // Upon successful login, send the user to the homepage were req.user
         // will be available.
-        res.redirect('/');
+        res.redirect('/admin');
       });
     });
   },

@@ -11,7 +11,7 @@
 module.exports = function(gulp, plugins, growl) {
 
 	gulp.task('less:dev', function() {
-		return gulp.src('assets/styles/importer.less')
+		return gulp.src(['assets/styles/importer.less', 'assets/styles/adminimporter.less'])
         .pipe(plugins.sourcemaps.init())
 				.pipe(
 					plugins.less({

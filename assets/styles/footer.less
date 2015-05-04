@@ -1,10 +1,14 @@
 .footer {
 
-  background-color: @grey-900;
+  padding: 16px;
+  background-color: #fff;
   text-align: center;
+  min-height: 200px;
+  color: #666666;
+  font-size: 14px;
 
-  a {
-    .mui-text-dark-white;
+  @media @device-medium {
+    padding: 32px;
   }
 
   p {
@@ -15,6 +19,64 @@
   }
 
   .mui-icon-button {
-    color: @dark-white;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    margin-right: 16px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  .footer-top {
+    @media @device-medium {
+      min-height: 110px;
+    }
+  }
+
+  .back-top {
+    color: @primary-1-color;
+    .mui-svg-icon {
+      margin-bottom: -7px;
+    }
+  }
+
+  .footer-content {
+    img {
+      vertical-align: bottom;
+      display: block;
+      max-width: 120px;
+    }
+
+    nav {
+      flex: 1 0 auto;
+      @media @device-medium {
+        flex-direction: row !important;
+      }
+    }
+  }
+
+  @media @device-medium {
+    .footer-share-links--top {
+      visibility: hidden;
+      pointer-events: none;
+    }
+  }
+
+  .mui-flat-button-label {
+    text-transform: none;
+  }
+
+  .footer nav>* {
+    @media (max-width: 767px) {
+      margin-top: 16px;
+    }
+  }
+
+  .footer-share-links--bottom {
+    @media (max-width: 767px)  {
+      display: none;
+    }
   }
 }
