@@ -1,4 +1,5 @@
 var React = require('react');
+var Reflux = require('reflux');
 var Router = require('react-router');
 var mui = require('material-ui');
 var Toolbar = mui.Toolbar;
@@ -11,7 +12,10 @@ var NavigationMenu = mui.Icons.NavigationMenu;
 
 var Header = React.createClass({
 
-  mixins: [Router.Navigation, Router.State],
+  mixins: [
+    Router.Navigation,
+    Router.State
+  ],
 
   getInitialState: function(){
     var selectedIndex = 0;

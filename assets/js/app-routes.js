@@ -7,6 +7,7 @@ var DefaultRoute = Router.DefaultRoute;
 var Master = require('./components/main.js');
 var Home = require('./components/pages/home');
 var Tournament = require('./components/pages/tournament');
+var DoubleTournament = require('./components/pages/doubletournament');
 var Schedule = require('./components/pages/schedule');
 var Rules = require('./components/pages/rules');
 var Players = require('./components/pages/players');
@@ -23,7 +24,7 @@ var Players = require('./components/pages/players');
 var AppRoutes = (
   <Route name="root" path="/" handler={Master}>
     <Route name="tournament" handler={Tournament} addHandlerKey={true}/>
-    <Route name="doubles" handler={Tournament} addHandlerKey={true}/>
+    <Route name="doubles" handler={DoubleTournament} addHandlerKey={true}/>
     <Route name="players" handler={Players} addHandlerKey={true}/>
     <Route name="schedule" handler={Schedule} addHandlerKey={true}/>
     <Route name="rules" handler={Rules} addHandlerKey={true}/>
