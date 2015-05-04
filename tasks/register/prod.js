@@ -3,6 +3,7 @@ module.exports = function (gulp, plugins) {
 		plugins.sequence(
 			'compileAssets',
 			'browserify:prod',
+      'concat:adminjs',
 			'concat:css',
 			'cssmin:dist',
 			'sails-linker-gulp:prodAssets',

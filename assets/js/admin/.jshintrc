@@ -1,0 +1,4 @@
+{
+    // Custom Globals
+    "globals"       : ["angular"]        // additional predefined global variables
+}

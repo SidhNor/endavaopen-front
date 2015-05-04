@@ -3,6 +3,7 @@ module.exports = function (gulp, plugins) {
 		plugins.sequence(
 			'compileAssets',
       'browserify:dev',
+      'concat:adminjs',
 			'linkAssets',
 			['watch:api', 'watch:assets'],
 			cb

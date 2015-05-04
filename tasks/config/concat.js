@@ -9,11 +9,9 @@
  */
 module.exports = function(gulp, plugins, growl) {
 
-	gulp.task('concat:js', function() {
-		return gulp.src(require('../pipeline').jsFilesToInject)
-				.pipe(plugins.jshint('.jshintrc'))
-				.pipe(plugins.jshint.reporter('default'))
-				.pipe(plugins.concat('production.js'))
+	gulp.task('concat:adminjs', function() {
+		return gulp.src(require('../pipeline').adminjsFilesToInject)
+				.pipe(plugins.concat('adminproduction.js'))
 				.pipe(plugins.rename({ suffix: '.min' }))
 				.pipe(plugins.uglify(/* {mangle: true} */))
 				.pipe(gulp.dest('./.tmp/public/concat'));

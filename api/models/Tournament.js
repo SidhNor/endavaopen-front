@@ -10,9 +10,6 @@ module.exports = {
   identity: 'tournament',
 
   attributes: {
-    tournamentId: {
-      type: 'string'
-    },
     name: {
       type: 'string'
     },
