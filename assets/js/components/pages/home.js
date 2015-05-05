@@ -26,22 +26,33 @@ var HomePage = React.createClass({
         </Card>
         <section className="onsite-pic"></section>
         <section className="open-begins layout flex vertical">
-          <h2>Endava Open begins May 15 10:00 AM EEST</h2>
+          <h2>Endava Open begins May 15 1:00 PM EEST</h2>
           <CountDown/>
         </section>
-        <div className="layout flex sidebyside">
-          <Card className="flex">SomeStuff</Card>
-          <Card className="flex" fullScreenFirst={true}>
-            <div className="card-photo drawing flex"></div>
-            <div>
-              <img className="play-button" src="images/play-video-button.png" alt="2014 drawing"/>
-              <FlatButton link={true} primary={true} label="Watch the 2014 Endava Open Drawing"/>
-            </div>
-          </Card>
-        </div>
       </div>
     );
   }
 });
 
 module.exports = HomePage;
+
+/*
+ <div className="layout flex sidebyside">
+ <Card className="flex">
+ <span>
+ <h4>Exclusive opening and closing cerempony</h4>
+ <h4>Wonderful atmosphere</h4>
+ <h4>Enthusiastic supporters</h4>
+ <h4>Engaging discussions</h4>
+ </span>
+ </Card>
+ <Card className="flex" fullScreenFirst={true}>
+ <div className="card-photo drawing flex"></div>
+ <div>
+ <img className="play-button" src="images/play-video-button.png" alt="2014 drawing"/>
+ <FlatButton link={true} primary={true} label="Watch the 2014 Endava Open Drawing"/>
+ </div>
+ </Card>
+ </div>
+
+ */

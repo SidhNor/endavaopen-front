@@ -42,14 +42,23 @@ var TournamentPage = React.createClass({
       return round.precedence;
     }).map(function(round) {
       return (
-        <section className="page-section"><Card>{round.name}</Card></section>
+        <Tab key={round.id} label={round.name}>
+          <section className="page-section"><Card>{round.name}</Card></section>
+        </Tab>
       );
     });
 
+    var tabsContent = (
+      <div className="card-container transparent">
+        <Tabs>
+        {rounds}
+        </Tabs>
+      </div>
+    );
+
     return (
       <div className={classes}>
-        {this.state.loading ? loadingInd: ''}
-            {rounds}
+        {this.state.loading ? loadingInd: tabsContent}
       </div>
     );
   },
