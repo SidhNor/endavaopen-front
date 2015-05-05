@@ -35,7 +35,7 @@ var jsFilesToInject = [
 ];
 
 var adminjsFilesToInject = [
-  'js/admin/**/*.js'
+  'js/admin/*.js'
 ];
 
 
