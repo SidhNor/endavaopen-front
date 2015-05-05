@@ -3,6 +3,7 @@ var Reflux = require('reflux');
 var Router = require('react-router');
 var mui = require('material-ui');
 var Card = require('../controls/card.js');
+var Spinner = require('../controls/spinner');
 var PageTransitionMixin = require('../controls/pagetransition-mixin');
 
 var actions    = require('../../actions/actions');

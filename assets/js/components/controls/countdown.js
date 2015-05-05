@@ -5,7 +5,7 @@ var Paper = mui.Paper;
 
 var CountDown = React.createClass({
 
-  beginDate: new Date('May 15, 2015, 10:00:00 GMT+0300').getTime(),
+  beginDate: new Date('May 15, 2015, 13:00:00 GMT+0300').getTime(),
   currentDate: new Date().getTime(),
 
   getInitialState: function(){
