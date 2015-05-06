@@ -1,8 +1,8 @@
 var endavaopenadmin = angular.module('endavaopenadmin', ['ng-admin']);
 endavaopenadmin.config(['NgAdminConfigurationProvider', function(nga) {
 	var app = nga.application('Endava Open')
-		.baseApiUrl('http://localhost:1337/');
-		
+		.baseApiUrl('');
+
 	var player = nga.entity('player')
 		.identifier(nga.field('id'));
 	//----------------------------------------------PLAYER
@@ -57,7 +57,7 @@ endavaopenadmin.config(['NgAdminConfigurationProvider', function(nga) {
 	//----------------------------------------------TOURNAMENT
 	var tournament = nga.entity('tournament')
 		.identifier(nga.field('id'));
-		
+
 	app.addEntity(tournament);
 	tournament.listView()
 		.title('Tournaments')
@@ -88,7 +88,7 @@ endavaopenadmin.config(['NgAdminConfigurationProvider', function(nga) {
 	//----------------------------------------------ROUND
 	var round = nga.entity('round')
 		.identifier(nga.field('id'));
-		
+
 	app.addEntity(round);
 	round.listView()
 		.title('Rounds')
@@ -138,7 +138,7 @@ endavaopenadmin.config(['NgAdminConfigurationProvider', function(nga) {
 	//----------------------------------------------MATCH
 	var match = nga.entity('match')
 		.identifier(nga.field('id'));
-		
+
 	app.addEntity(match);
 	match.listView()
 		.title('Matches')
@@ -212,7 +212,7 @@ endavaopenadmin.config(['NgAdminConfigurationProvider', function(nga) {
 	//----------------------------------------------SCORE
 	var score = nga.entity('score')
 		.identifier(nga.field('id'));
-		
+
 	app.addEntity(score);
 	score.listView()
 		.title('Scores')
@@ -283,7 +283,7 @@ endavaopenadmin.config(["RestangularProvider", function(rp) {
 			delete params._sortDir;
 			delete params._sortField;
 		}
-		
+
 		return { params: params };
 	});
 }]);
