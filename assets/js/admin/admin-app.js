@@ -15,7 +15,7 @@ endavaopenadmin.config(['NgAdminConfigurationProvider', function(nga) {
 			nga.field('deliveryUnit'),
 			nga.field('jobTitle'),
 			nga.field('seedNumber'),
-			nga.field('createdAt')
+			nga.field('createdAt', 'datetime')
 		])
 		.listActions(['show', 'edit', 'delete']);
 	player.creationView()
@@ -51,8 +51,8 @@ endavaopenadmin.config(['NgAdminConfigurationProvider', function(nga) {
 			nga.field('jobTitle'),
 			nga.field('description'),
 			nga.field('seedNumber'),
-			nga.field('createdAt'),
-			nga.field('updatedAt')
+			nga.field('createdAt', 'datetime'),
+			nga.field('updatedAt', 'datetime')
 		]);
 	//----------------------------------------------TOURNAMENT
 	var tournament = nga.entity('tournament')
@@ -224,7 +224,7 @@ endavaopenadmin.config(['NgAdminConfigurationProvider', function(nga) {
 			nga.field('summary'),
 			nga.field('match')
 				.map(function truncate(value, entry) {
-					return entry.player1.fullName + " vs. " + entry.player2.fullName + " : " + entry.date;
+					return value.player1.fullName + " vs. " + value.player2.fullName + " : " + value.date;
 				})
 		])
 		.listActions(['show', 'edit', 'delete']);
