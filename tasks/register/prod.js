@@ -1,10 +1,9 @@
 module.exports = function (gulp, plugins) {
 	gulp.task('prod', function(cb) {
 		plugins.sequence(
-			'compileAssets',
+			'compileAssets:prod',
 			'browserify:prod',
       'concat:adminjs',
-			'concat:css',
 			'cssmin:dist',
 			'sails-linker-gulp:prodAssets',
 			'sails-linker-gulp:prodViews',
