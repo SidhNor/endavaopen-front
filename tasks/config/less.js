@@ -23,4 +23,16 @@ module.exports = function(gulp, plugins, growl) {
         .pipe(plugins.sourcemaps.write())
 				.pipe(gulp.dest('.tmp/public/styles/'));
 	});
+
+  gulp.task('less:prod', function() {
+    return gulp.src(['assets/styles/importer.less', 'assets/styles/adminimporter.less'])
+      .pipe(
+      plugins.less({
+        expand: true,
+        ext: '.css'
+      })
+    )
+    .pipe(plugins.autoprefixer('last 2 version', 'safari 5', 'ie 10', 'opera 12.1', 'ios 6', 'android 4'))
+    .pipe(gulp.dest('.tmp/public/styles/'));
+  });
 };

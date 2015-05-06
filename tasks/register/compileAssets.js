@@ -7,4 +7,13 @@ module.exports = function (gulp, plugins) {
 			cb
 		);
 	});
+
+  gulp.task('compileAssets:prod', function(cb) {
+    plugins.sequence(
+      'clean:dev',
+      'less:prod',
+      'copy:dev',
+      cb
+    );
+  });
 };
