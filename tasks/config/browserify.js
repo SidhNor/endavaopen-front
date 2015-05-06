@@ -17,10 +17,10 @@ module.exports = function(gulp, plugins, growl) {
 
   gulp.task('browserify:dev', function(cb) {
     var bundler = browserify({
-       noparse: ['react/addons', 'reflux', 'react-router'],
+       noparse: ['react/addons', 'reflux', 'react-router', 'underscore', 'material-ui'],
        entries: ['./assets/js/app.js'],
        transform: [reactify],
-       extensions: ['.jsx', '.js'],
+       extensions: ['.js'],
        debug: true,
        cache: {},
        packageCache: {},
