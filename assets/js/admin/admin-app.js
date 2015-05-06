@@ -95,7 +95,7 @@ endavaopenadmin.config(['NgAdminConfigurationProvider', function(nga) {
 		.fields([
 			nga.field('id'),
 			nga.field('name'),
-			nga.field('day', 'date'),
+			nga.field('day', 'datetime'),
 			nga.field('precedence'),
 			nga.field('tournament')
 				.map(function truncate(value, entry) {
@@ -107,7 +107,7 @@ endavaopenadmin.config(['NgAdminConfigurationProvider', function(nga) {
 		.title('New Round')
 		.fields([
 			nga.field('name'),
-			nga.field('day', 'date'),
+			nga.field('day', 'datetime'),
 			nga.field('precedence'),
 			nga.field('tournament', 'reference')
 				.targetEntity(tournament)
@@ -117,7 +117,7 @@ endavaopenadmin.config(['NgAdminConfigurationProvider', function(nga) {
 		.title('Edit Round')
 		.fields([
 			nga.field('name'),
-			nga.field('day', 'date'),
+			nga.field('day', 'datetime'),
 			nga.field('precedence'),
 			nga.field('tournament', 'reference')
 				.targetEntity(tournament)
@@ -128,7 +128,7 @@ endavaopenadmin.config(['NgAdminConfigurationProvider', function(nga) {
 		.fields([
 			nga.field('id'),
 			nga.field('name'),
-			nga.field('day', 'date'),
+			nga.field('day', 'datetime'),
 			nga.field('precedence'),
 			nga.field('tournament')
 				.map(function truncate(value, entry) {
@@ -144,7 +144,7 @@ endavaopenadmin.config(['NgAdminConfigurationProvider', function(nga) {
 		.title('Matches')
 		.fields([
 			nga.field('id'),
-			nga.field('date', 'date'),
+			nga.field('date', 'datetime'),
 			nga.field('location'),
 			nga.field('player1')
 				.map(function truncate(value, entry) {
@@ -163,7 +163,7 @@ endavaopenadmin.config(['NgAdminConfigurationProvider', function(nga) {
 	match.creationView()
 		.title('New Match')
 		.fields([
-			nga.field('date', 'date'),
+			nga.field('date', 'datetime'),
 			nga.field('location'),
 			nga.field('player1', 'reference')
 				.targetEntity(player)
@@ -178,7 +178,7 @@ endavaopenadmin.config(['NgAdminConfigurationProvider', function(nga) {
 	match.editionView()
 		.title('Edit Match')
 		.fields([
-			nga.field('date', 'date'),
+			nga.field('date', 'datetime'),
 			nga.field('location'),
 			nga.field('player1', 'reference')
 				.targetEntity(player)
@@ -194,7 +194,7 @@ endavaopenadmin.config(['NgAdminConfigurationProvider', function(nga) {
 		.title('Match Details')
 		.fields([
 			nga.field('id'),
-			nga.field('date', 'date'),
+			nga.field('date', 'datetime'),
 			nga.field('location'),
 			nga.field('player1')
 				.map(function truncate(value, entry) {
@@ -210,7 +210,65 @@ endavaopenadmin.config(['NgAdminConfigurationProvider', function(nga) {
 				}),
 		]);
 	//----------------------------------------------SCORE
-	//----------------------------------------------
+	var score = nga.entity('score')
+		.identifier(nga.field('id'));
+		
+	app.addEntity(score);
+	score.listView()
+		.title('Scores')
+		.fields([
+			nga.field('id'),
+			nga.field('set1'),
+			nga.field('set2'),
+			nga.field('set3'),
+			nga.field('summary'),
+			nga.field('match')
+				.map(function truncate(value, entry) {
+					return entry.player1.fullName + " vs. " + entry.player2.fullName + " : " + entry.date;
+				})
+		])
+		.listActions(['show', 'edit', 'delete']);
+	score.creationView()
+		.title('New Score')
+		.fields([
+			nga.field('set1'),
+			nga.field('set2'),
+			nga.field('set3'),
+			nga.field('summary'),
+			nga.field('match', 'reference')
+				.targetEntity(match)
+				.targetField(nga.field('player1')
+					.map(function truncate(value, entry) {
+						return entry.player1.fullName + " vs. " + entry.player2.fullName + " : " + entry.date;
+					}))
+		]);
+	score.editionView()
+		.title('Edit Score')
+		.fields([
+			nga.field('set1'),
+			nga.field('set2'),
+			nga.field('set3'),
+			nga.field('summary'),
+			nga.field('match', 'reference')
+				.targetEntity(match)
+				.targetField(nga.field('player1')
+					.map(function truncate(value, entry) {
+						return entry.player1.fullName + " vs. " + entry.player2.fullName + " : " + entry.date;
+					}))
+		]);
+	score.showView()
+		.title('Score Details')
+		.fields([
+			nga.field('id'),
+			nga.field('set1'),
+			nga.field('set2'),
+			nga.field('set3'),
+			nga.field('summary'),
+			nga.field('match')
+				.map(function truncate(value, entry) {
+					return entry.player1.fullName + " vs. " + entry.player2.fullName + " : " + entry.date;
+				})
+		]);
 	nga.configure(app);
 }]);
 
