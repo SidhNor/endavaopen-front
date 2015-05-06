@@ -40,19 +40,19 @@ module.exports = {
   },
 
   gulp: {
-    _hookTimeout: 100000
+    _hookTimeout: 200000
   },
 
   orm: {
-    _hookTimeout: 100000
+    _hookTimeout: 200000
   },
 
   views: {
-    _hookTimeout: 100000
+    _hookTimeout: 200000
   },
 
   pubsub: {
-    _hookTimeout: 100000
+    _hookTimeout: 200000
   }
 
 
