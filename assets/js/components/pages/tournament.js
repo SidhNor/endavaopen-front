@@ -4,6 +4,7 @@ var Router = require('react-router');
 var mui = require('material-ui');
 var Card = require('../controls/card.js');
 var Spinner = require('../controls/spinner');
+var RoundDetails = require('../controls/round-details');
 var PageTransitionMixin = require('../controls/pagetransition-mixin');
 var _ = require('underscore');
 
@@ -34,16 +35,22 @@ var TournamentPage = React.createClass({
     };
   },
 
+  _onRoundSwitch: function(tab) {
+    this.setState({
+      activeRoundId: tab.props.roundId
+    });
+  },
+
   render: function () {
     var tournament = this.state.tournament;
     var classes = React.addons.classSet(this.getCurrentAnimClasses(), 'mui-app-content-canvas');
     var loadingInd = <section className="page-section"><Card><Spinner></Spinner></Card></section>;
+    var me = this;
     var rounds = _.sortBy(tournament.rounds, function(round) {
       return round.precedence;
     }).map(function(round) {
       return (
-        <Tab key={round.id} label={round.name}>
-          <section className="page-section"><Card>{round.name}</Card></section>
+        <Tab key={round.id} roundId={round.id} label={round.name} onActive={me._onRoundSwitch}>
         </Tab>
       );
     });
@@ -53,6 +60,7 @@ var TournamentPage = React.createClass({
         <Tabs>
         {rounds}
         </Tabs>
+        <RoundDetails roundId={this.state.activeRoundId}/>
       </div>
     );
 
@@ -64,8 +72,10 @@ var TournamentPage = React.createClass({
   },
 
   onStoreUpdate: function(tournament) {
+    var initialRoundId = tournament.rounds.length > 0 ? tournament.rounds[0].id : '';
     this.setState({
       loading: false,
+      activeRoundId: initialRoundId,
       tournament: tournament
     })
   }

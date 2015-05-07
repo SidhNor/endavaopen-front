@@ -20,13 +20,13 @@ var CountDown = React.createClass({
     var label =  '';
     var count = this.state.daysRemaining;
     if (this.state.daysRemaining > 0) {
-      label = 'DAYS UNTIL OPEN BEGINS';
+      label = 'DAYS UNTIL ENDAVA OPEN BEGINS';
     } else if (this.state.hoursRemaining > 0) {
       count = this.state.hoursRemaining;
-      label = 'HOURS UNTIL OPEN BEGINS';
+      label = 'HOURS UNTIL ENDAVA OPEN BEGINS';
     } else {
       count = this.state.minutesRemaining;
-      label = 'minutes until open begins';
+      label = 'minutes until ENDAVA open begins';
     }
     return (
       <div className="countdown layout vertical center">

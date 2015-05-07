@@ -19,7 +19,22 @@ var actions = Reflux.createActions([
   //Double tournament actions
   'getDoubleTournament',
   'deliverDoubleTournament',
-  'loadDoubleTournamentFailed'
+  'loadDoubleTournamentFailed',
+
+  //Rounds
+  'getRounds',
+  'deliverRounds',
+  'loadRoundsFailed',
+
+  //Matches
+  'getMatches',
+  'deliverMatches',
+  'loadMatchesFailed',
+
+  //Double Matches
+  'getDoubleMatches',
+  'deliverDoubleMatches',
+  'loadDoubleMatchesFailed'
 ]);
 
 
@@ -48,5 +63,28 @@ actions.getDoubleTournament.listen(function() {
     .catch(actions.loadDoubleTournamentFailed);
 });
 
+actions.getRounds.listen(function() {
+  TournamentApi.getRounds()
+    .then(function(resp) {
+      actions.deliverRounds(JSON.parse(resp))
+    })
+    .catch(actions.loadRoundsFailed);
+});
+
+actions.getMatches.listen(function() {
+  TournamentApi.getMatches()
+    .then(function(resp) {
+      actions.deliverMatches(JSON.parse(resp))
+    })
+    .catch(actions.loadMatchesFailed);
+});
+
+actions.getDoubleMatches.listen(function() {
+  TournamentApi.getDoubleMatches()
+    .then(function(resp) {
+      actions.deliverDoubleMatches(JSON.parse(resp))
+    })
+    .catch(actions.loadDoubleMatchesFailed);
+});
 
 module.exports = actions;

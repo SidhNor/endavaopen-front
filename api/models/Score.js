@@ -8,6 +8,7 @@
 module.exports = {
 
   identity: 'score',
+
   attributes: {
     set1: {
       type: 'string'
@@ -20,6 +21,9 @@ module.exports = {
     },
     summary: {
       type: 'string'
+    },
+    match: {
+      model: 'match'
     }
   }
 };
