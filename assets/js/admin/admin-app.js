@@ -5,6 +5,16 @@ endavaopenadmin.config(['NgAdminConfigurationProvider', function(nga) {
 
 	var player = nga.entity('player')
 		.identifier(nga.field('id'));
+	var tournament = nga.entity('tournament')
+		.identifier(nga.field('id'));
+	var round = nga.entity('round')
+		.identifier(nga.field('id'));
+	var match = nga.entity('match')
+		.identifier(nga.field('id'));
+	var doublematch = nga.entity('doublematch')
+		.identifier(nga.field('id'));
+	var score = nga.entity('score')
+		.identifier(nga.field('id'));
 	//----------------------------------------------PLAYER
 	app.addEntity(player);
 	player.listView()
@@ -55,8 +65,6 @@ endavaopenadmin.config(['NgAdminConfigurationProvider', function(nga) {
 			nga.field('updatedAt', 'datetime')
 		]);
 	//----------------------------------------------TOURNAMENT
-	var tournament = nga.entity('tournament')
-		.identifier(nga.field('id'));
 
 	app.addEntity(tournament);
 	tournament.listView()
@@ -86,8 +94,6 @@ endavaopenadmin.config(['NgAdminConfigurationProvider', function(nga) {
 			nga.field('started')
 		]);
 	//----------------------------------------------ROUND
-	var round = nga.entity('round')
-		.identifier(nga.field('id'));
 
 	app.addEntity(round);
 	round.listView()
@@ -136,8 +142,6 @@ endavaopenadmin.config(['NgAdminConfigurationProvider', function(nga) {
 				})
 		]);
 	//----------------------------------------------MATCH
-	var match = nga.entity('match')
-		.identifier(nga.field('id'));
 
 	app.addEntity(match);
 	match.listView()
@@ -209,9 +213,107 @@ endavaopenadmin.config(['NgAdminConfigurationProvider', function(nga) {
 					return value.name;
 				}),
 		]);
+	//----------------------------------------------DOUBLE_MATCH
+
+	app.addEntity(doublematch);
+	doublematch.listView()
+		.title('DoubleMatches')
+		.fields([
+			nga.field('id'),
+			nga.field('date', 'datetime'),
+			nga.field('location'),
+			nga.field('player11')
+				.map(function truncate(value, entry) {
+					return value.fullName;
+				}),
+			nga.field('player12')
+				.map(function truncate(value, entry) {
+					return value.fullName;
+				}),
+			nga.field('player21')
+				.map(function truncate(value, entry) {
+					return value.fullName;
+				}),
+			nga.field('player22')
+				.map(function truncate(value, entry) {
+					return value.fullName;
+				}),
+			nga.field('round')
+				.map(function truncate(value, entry) {
+					return value.name;
+				}),
+		])
+		.listActions(['show', 'edit', 'delete']);
+	doublematch.creationView()
+		.title('New DoubleMatch')
+		.fields([
+			nga.field('date', 'datetime'),
+			nga.field('location'),
+			nga.field('player11', 'reference')
+				.targetEntity(player)
+				.targetField(nga.field('fullName')),
+			nga.field('player12', 'reference')
+				.targetEntity(player)
+				.targetField(nga.field('fullName')),
+			nga.field('player21', 'reference')
+				.targetEntity(player)
+				.targetField(nga.field('fullName')),
+			nga.field('player22', 'reference')
+				.targetEntity(player)
+				.targetField(nga.field('fullName')),
+			nga.field('round', 'reference')
+				.targetEntity(round)
+				.targetField(nga.field('name'))
+		]);
+	doublematch.editionView()
+		.title('Edit DoubleMatch')
+		.fields([
+			nga.field('date', 'datetime'),
+			nga.field('location'),
+			nga.field('player11', 'reference')
+				.targetEntity(player)
+				.targetField(nga.field('fullName')),
+			nga.field('player12', 'reference')
+				.targetEntity(player)
+				.targetField(nga.field('fullName')),
+			nga.field('player21', 'reference')
+				.targetEntity(player)
+				.targetField(nga.field('fullName')),
+			nga.field('player22', 'reference')
+				.targetEntity(player)
+				.targetField(nga.field('fullName')),
+			nga.field('round', 'reference')
+				.targetEntity(round)
+				.targetField(nga.field('name'))
+		]);
+	doublematch.showView()
+		.title('DoubleMatch Details')
+		.fields([
+			nga.field('id'),
+			nga.field('date', 'datetime'),
+			nga.field('location'),
+			nga.field('player11')
+				.map(function truncate(value, entry) {
+					return value.fullName;
+				}),
+			nga.field('player12')
+				.map(function truncate(value, entry) {
+					return value.fullName;
+				}),
+			nga.field('player21')
+				.map(function truncate(value, entry) {
+					return value.fullName;
+				}),
+			nga.field('player22')
+				.map(function truncate(value, entry) {
+					return value.fullName;
+				}),
+			nga.field('round')
+				.map(function truncate(value, entry) {
+					return value.name;
+				}),
+		]);
 	//----------------------------------------------SCORE
-	var score = nga.entity('score')
-		.identifier(nga.field('id'));
 
 	app.addEntity(score);
 	score.listView()
