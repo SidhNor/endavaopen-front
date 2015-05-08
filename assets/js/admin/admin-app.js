@@ -4,16 +4,19 @@ endavaopenadmin.config(['NgAdminConfigurationProvider', function(nga) {
 		.baseApiUrl('');
 
 	var player = nga.entity('player')
+		.label('Players')
 		.identifier(nga.field('id'));
 	var tournament = nga.entity('tournament')
+		.label('Tournaments')
 		.identifier(nga.field('id'));
 	var round = nga.entity('round')
+		.label('Rounds')
 		.identifier(nga.field('id'));
 	var match = nga.entity('match')
+		.label('Matches (singles)')
 		.identifier(nga.field('id'));
 	var doublematch = nga.entity('doublematch')
-		.identifier(nga.field('id'));
-	var score = nga.entity('score')
+		.label('Matches (doubles)')
 		.identifier(nga.field('id'));
 	//----------------------------------------------PLAYER
 	app.addEntity(player);
@@ -108,6 +111,7 @@ endavaopenadmin.config(['NgAdminConfigurationProvider', function(nga) {
 					return value.name;
 				})
 		])
+		.sortField('precedence')
 		.listActions(['show', 'edit', 'delete']);
 	round.creationView()
 		.title('New Round')
@@ -147,71 +151,69 @@ endavaopenadmin.config(['NgAdminConfigurationProvider', function(nga) {
 	match.listView()
 		.title('Matches')
 		.fields([
-			nga.field('id'),
-			nga.field('date', 'datetime'),
-			nga.field('location'),
-			nga.field('player1')
-				.map(function truncate(value, entry) {
-					return value.fullName;
-				}),
-			nga.field('player2')
-				.map(function truncate(value, entry) {
-					return value.fullName;
-				}),
 			nga.field('round')
 				.map(function truncate(value, entry) {
 					return value.name;
 				}),
+			nga.field('player1')
+				.label('Title')
+				.map(function truncate(value, entry) {
+					var title = entry.player1.fullName;
+					if (entry.set1) {
+						title += ' (' + entry.set1 + ', ' + entry.set2 + ', ' + entry.set3 + ') ';
+					}
+					else {
+						title += ' vs. ';
+					}
+
+					title += entry.player2.fullName;
+					return title;
+				})
+				.isDetailLink(true),
+			nga.field('date', 'datetime'),
+			nga.field('location')
 		])
 		.listActions(['show', 'edit', 'delete']);
 	match.creationView()
 		.title('New Match')
 		.fields([
 			nga.field('date', 'datetime'),
-			nga.field('location'),
 			nga.field('player1', 'reference')
+				.label('Player A')
 				.targetEntity(player)
 				.targetField(nga.field('fullName')),
 			nga.field('player2', 'reference')
+				.label('Player B')
 				.targetEntity(player)
 				.targetField(nga.field('fullName')),
 			nga.field('round', 'reference')
 				.targetEntity(round)
-				.targetField(nga.field('name'))
+				.targetField(nga.field('name')),
+			nga.field('location')
 		]);
 	match.editionView()
 		.title('Edit Match')
 		.fields([
-			nga.field('date', 'datetime'),
-			nga.field('location'),
-			nga.field('player1', 'reference')
-				.targetEntity(player)
-				.targetField(nga.field('fullName')),
-			nga.field('player2', 'reference')
-				.targetEntity(player)
-				.targetField(nga.field('fullName')),
-			nga.field('round', 'reference')
-				.targetEntity(round)
-				.targetField(nga.field('name'))
-		]);
-	match.showView()
-		.title('Match Details')
-		.fields([
-			nga.field('id'),
-			nga.field('date', 'datetime'),
-			nga.field('location'),
-			nga.field('player1')
-				.map(function truncate(value, entry) {
-					return value.fullName;
-				}),
-			nga.field('player2')
-				.map(function truncate(value, entry) {
-					return value.fullName;
-				}),
+			nga.field('date', 'datetime')
+				.editable(false),
 			nga.field('round')
 				.map(function truncate(value, entry) {
 					return value.name;
-				}),
+				})
+				.editable(false),
+			nga.field('date')
+				.label('Title')
+				.map(function truncate(value, entry) {
+					if(entry && entry.player1 && entry.player2)
+						return entry.player1.fullName + ' vs. ' + entry.player2.fullName;
+				})
+				.editable(false),
+			nga.field('location')
+				.editable(false),
+			nga.field('set1'),
+			nga.field('set2'),
+			nga.field('set3'),
+			nga.field('summary')
 		]);
 	//----------------------------------------------DOUBLE_MATCH
 
@@ -219,158 +221,88 @@ endavaopenadmin.config(['NgAdminConfigurationProvider', function(nga) {
 	doublematch.listView()
 		.title('DoubleMatches')
 		.fields([
-			nga.field('id'),
-			nga.field('date', 'datetime'),
-			nga.field('location'),
-			nga.field('player11')
-				.map(function truncate(value, entry) {
-					return value.fullName;
-				}),
-			nga.field('player12')
-				.map(function truncate(value, entry) {
-					return value.fullName;
-				}),
-			nga.field('player21')
-				.map(function truncate(value, entry) {
-					return value.fullName;
-				}),
-			nga.field('player22')
-				.map(function truncate(value, entry) {
-					return value.fullName;
-				}),
 			nga.field('round')
 				.map(function truncate(value, entry) {
 					return value.name;
 				}),
+			nga.field('player11')
+				.label('Title')
+				.map(function truncate(value, entry) {
+					var title = entry.player11.fullName + ' & ' + entry.player12.fullName;
+					if (entry.set1) {
+						title += ' (' + entry.set1 + ', ' + entry.set2 + ', ' + entry.set3 + ') ';
+					}
+					else {
+						title += ' vs. ';
+					}
+
+					title += entry.player21.fullName + ' & ' + entry.player22.fullName;
+					return title;
+				})
+				.isDetailLink(true),
+			nga.field('date', 'datetime'),
+			nga.field('location')
 		])
 		.listActions(['show', 'edit', 'delete']);
 	doublematch.creationView()
 		.title('New DoubleMatch')
 		.fields([
 			nga.field('date', 'datetime'),
-			nga.field('location'),
 			nga.field('player11', 'reference')
+				.label('Player A 1')
 				.targetEntity(player)
 				.targetField(nga.field('fullName')),
 			nga.field('player12', 'reference')
+				.label('Player A 2')
 				.targetEntity(player)
 				.targetField(nga.field('fullName')),
 			nga.field('player21', 'reference')
+				.label('Player B 1')
 				.targetEntity(player)
 				.targetField(nga.field('fullName')),
 			nga.field('player22', 'reference')
+				.label('Player B 2')
 				.targetEntity(player)
 				.targetField(nga.field('fullName')),
 			nga.field('round', 'reference')
 				.targetEntity(round)
-				.targetField(nga.field('name'))
+				.targetField(nga.field('name')),
+			nga.field('location')
 		]);
 	doublematch.editionView()
 		.title('Edit DoubleMatch')
 		.fields([
 			nga.field('date', 'datetime'),
-			nga.field('location'),
-			nga.field('player11', 'reference')
-				.targetEntity(player)
-				.targetField(nga.field('fullName')),
-			nga.field('player12', 'reference')
-				.targetEntity(player)
-				.targetField(nga.field('fullName')),
-			nga.field('player21', 'reference')
-				.targetEntity(player)
-				.targetField(nga.field('fullName')),
-			nga.field('player22', 'reference')
-				.targetEntity(player)
-				.targetField(nga.field('fullName')),
-			nga.field('round', 'reference')
-				.targetEntity(round)
-				.targetField(nga.field('name'))
-		]);
-	doublematch.showView()
-		.title('DoubleMatch Details')
-		.fields([
-			nga.field('id'),
-			nga.field('date', 'datetime'),
-			nga.field('location'),
-			nga.field('player11')
-				.map(function truncate(value, entry) {
-					return value.fullName;
-				}),
-			nga.field('player12')
-				.map(function truncate(value, entry) {
-					return value.fullName;
-				}),
-			nga.field('player21')
-				.map(function truncate(value, entry) {
-					return value.fullName;
-				}),
-			nga.field('player22')
-				.map(function truncate(value, entry) {
-					return value.fullName;
-				}),
 			nga.field('round')
 				.map(function truncate(value, entry) {
 					return value.name;
-				}),
-		]);
-	//----------------------------------------------SCORE
+				})
+				.editable(false),
+			nga.field('player11')
+				.label('Title')
+				.map(function truncate(value, entry) {
+					if(entry.player11 && entry.player12 && entry.player21 && entry.player22) {
+						var title = entry.player11.fullName + ' & ' + entry.player12.fullName;
+						if (entry.set1) {
+							title += ' (' + entry.set1 + ', ' + entry.set2 + ', ' + entry.set3 + ') ';
+						}
+						else {
+							title += ' vs. ';
+						}
 
-	app.addEntity(score);
-	score.listView()
-		.title('Scores')
-		.fields([
-			nga.field('id'),
-			nga.field('set1'),
-			nga.field('set2'),
-			nga.field('set3'),
-			nga.field('summary'),
-			nga.field('match')
-				.map(function truncate(value, entry) {
-					return value.player1.fullName + " vs. " + value.player2.fullName + " : " + value.date;
+						title += entry.player21.fullName + ' & ' + entry.player22.fullName;
+						return title;
+					}
 				})
-		])
-		.listActions(['show', 'edit', 'delete']);
-	score.creationView()
-		.title('New Score')
-		.fields([
+				.editable(false),
+			nga.field('location')
+				.editable(false),
 			nga.field('set1'),
 			nga.field('set2'),
 			nga.field('set3'),
-			nga.field('summary'),
-			nga.field('match', 'reference')
-				.targetEntity(match)
-				.targetField(nga.field('player1')
-					.map(function truncate(value, entry) {
-						return entry.player1.fullName + " vs. " + entry.player2.fullName + " : " + entry.date;
-					}))
+			nga.field('summary')
 		]);
-	score.editionView()
-		.title('Edit Score')
-		.fields([
-			nga.field('set1'),
-			nga.field('set2'),
-			nga.field('set3'),
-			nga.field('summary'),
-			nga.field('match', 'reference')
-				.targetEntity(match)
-				.targetField(nga.field('player1')
-					.map(function truncate(value, entry) {
-						return entry.player1.fullName + " vs. " + entry.player2.fullName + " : " + entry.date;
-					}))
-		]);
-	score.showView()
-		.title('Score Details')
-		.fields([
-			nga.field('id'),
-			nga.field('set1'),
-			nga.field('set2'),
-			nga.field('set3'),
-			nga.field('summary'),
-			nga.field('match')
-				.map(function truncate(value, entry) {
-					return entry.player1.fullName + " vs. " + entry.player2.fullName + " : " + entry.date;
-				})
-		]);
+	
 	nga.configure(app);
 }]);
 

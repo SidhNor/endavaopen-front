@@ -17,8 +17,17 @@ module.exports = {
       type: 'string'
     },
 
-    score: {
-      model: 'Score'
+    set1: {
+      type: 'string'
+    },
+    set2: {
+      type: 'string'
+    },
+    set3: {
+      type: 'string'
+    },
+    summary: {
+      type: 'string'
     },
 
     player1: {
