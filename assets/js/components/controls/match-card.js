@@ -25,14 +25,14 @@ var MatchCard = React.createClass({
     var matchDate = new Date(match.date);
 
     var score = '';
-    if (match.score) {
+    if (match.set1) {
       score = (
         <div>
           <div>
-            {match.score.set1} | {match.score.set2} | {match.score.set3}
+            {match.set1} | {match.set2} | {match.set3}
           </div>
           <div>
-            {match.score.summary}
+            {match.summary}
           </div>
         </div>
       );
