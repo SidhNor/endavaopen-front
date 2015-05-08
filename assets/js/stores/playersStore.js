@@ -17,6 +17,12 @@ var playersStore = Reflux.createStore({
     this.trigger(players);
   },
 
+  getPlayerById: function(id) {
+    return this.players.filter(function(player) {
+      return player.id == id;
+    })[0];
+  },
+
   getDefaultData: function() {
     return this.players;
   }
