@@ -104,7 +104,7 @@ endavaopenadmin.config(['NgAdminConfigurationProvider', function(nga) {
 		.fields([
 			nga.field('id'),
 			nga.field('name'),
-			nga.field('day', 'datetime'),
+			nga.field('day'),
 			nga.field('precedence'),
 			nga.field('tournament')
 				.map(function truncate(value, entry) {
@@ -117,7 +117,19 @@ endavaopenadmin.config(['NgAdminConfigurationProvider', function(nga) {
 		.title('New Round')
 		.fields([
 			nga.field('name'),
-			nga.field('day', 'datetime'),
+			nga.field('day', 'datetime')
+				.label('Day (yyyy-MM-dd)')
+				.format('yyyy-MM-dd')
+				.map(function (value, entry) {
+					if(entry.day && entry.time) {
+						entry.day = entry.day + ' ' + entry.time;
+						entry.time = undefined;
+					}
+					
+					return entry.day;
+				}),
+			nga.field('time')
+				.label('Time (HH:mm)'),
 			nga.field('precedence'),
 			nga.field('tournament', 'reference')
 				.targetEntity(tournament)
@@ -127,18 +139,22 @@ endavaopenadmin.config(['NgAdminConfigurationProvider', function(nga) {
 		.title('Edit Round')
 		.fields([
 			nga.field('name'),
-			nga.field('day', 'datetime'),
+			nga.field('day')
+				.label('Day (yyyy-MM-dd HH:mm)'),
 			nga.field('precedence'),
-			nga.field('tournament', 'reference')
-				.targetEntity(tournament)
-				.targetField(nga.field('name'))
+			nga.field('tournament')
+				.map(function truncate(value, entry) {
+					return value.name;
+				})
+				.editable(false)
 		]);
 	round.showView()
 		.title('Round Details')
 		.fields([
 			nga.field('id'),
 			nga.field('name'),
-			nga.field('day', 'datetime'),
+			nga.field('day')
+				.label('Day (yyyy-MM-dd HH:mm)'),
 			nga.field('precedence'),
 			nga.field('tournament')
 				.map(function truncate(value, entry) {
@@ -157,7 +173,7 @@ endavaopenadmin.config(['NgAdminConfigurationProvider', function(nga) {
 				}),
 			nga.field('player1')
 				.label('Title')
-				.map(function truncate(value, entry) {
+				.map(function (value, entry) {
 					var title = entry.player1.fullName;
 					if (entry.set1) {
 						title += ' (' + entry.set1 + ', ' + entry.set2 + ', ' + entry.set3 + ') ';
@@ -170,14 +186,18 @@ endavaopenadmin.config(['NgAdminConfigurationProvider', function(nga) {
 					return title;
 				})
 				.isDetailLink(true),
-			nga.field('date', 'datetime'),
+			nga.field('date')
+				.map(function (value, entry) {
+					if(value) {
+						return value.substr(0, 10) + ' ' + value.substr(11, 5);
+					}
+				}),
 			nga.field('location')
 		])
 		.listActions(['show', 'edit', 'delete']);
 	match.creationView()
 		.title('New Match')
 		.fields([
-			nga.field('date', 'datetime'),
 			nga.field('player1', 'reference')
 				.label('Player A')
 				.targetEntity(player)
@@ -189,31 +209,58 @@ endavaopenadmin.config(['NgAdminConfigurationProvider', function(nga) {
 			nga.field('round', 'reference')
 				.targetEntity(round)
 				.targetField(nga.field('name')),
-			nga.field('location')
+			nga.field('date', 'datetime')
+				.label('Play On (yyyy-MM-dd)')
+				.format('yyyy-MM-dd')
+				.map(function (value, entry) {
+					if(entry.date && entry.time) {
+						entry.date = entry.date + 'T' + entry.time + ':00.000Z';
+						entry.time = undefined;
+					}
+					
+					return entry.date;
+				}),
+			nga.field('time')
+				.label('Time (HH:mm)'),
+			nga.field('location', 'choice')
+				.choices([
+				  { value: 'Niagara Courts', label: 'Niagara Courts' },
+				  { value: 'State University', label: 'State University' },
+				])
 		]);
 	match.editionView()
 		.title('Edit Match')
 		.fields([
-			nga.field('date', 'datetime')
-				.editable(false),
 			nga.field('round')
 				.map(function truncate(value, entry) {
 					return value.name;
 				})
 				.editable(false),
-			nga.field('date')
+			nga.field('createdAt')
 				.label('Title')
 				.map(function truncate(value, entry) {
 					if(entry && entry.player1 && entry.player2)
 						return entry.player1.fullName + ' vs. ' + entry.player2.fullName;
 				})
 				.editable(false),
-			nga.field('location')
-				.editable(false),
+			nga.field('date', 'string')
+				.label('Play On (yyyy-MM-dd HH:mm)')
+				.map(function truncate(value, entry) {
+					if(entry.round && value) {
+						return value.substr(0, 10) + ' ' + value.substr(11, 5);
+					}
+
+					return value;
+				}),
 			nga.field('set1'),
 			nga.field('set2'),
 			nga.field('set3'),
-			nga.field('summary')
+			nga.field('summary'),
+			nga.field('location', 'choice')
+				.choices([
+				  { value: 'Niagara Courts', label: 'Niagara Courts' },
+				  { value: 'State University', label: 'State University' },
+				])
 		]);
 	//----------------------------------------------DOUBLE_MATCH
 
@@ -240,14 +287,16 @@ endavaopenadmin.config(['NgAdminConfigurationProvider', function(nga) {
 					return title;
 				})
 				.isDetailLink(true),
-			nga.field('date', 'datetime'),
+			nga.field('date')
+				.map(function (value, entry) {
+					return value.substr(0, 10) + ' ' + value.substr(11, 5);
+				}),
 			nga.field('location')
 		])
 		.listActions(['show', 'edit', 'delete']);
 	doublematch.creationView()
 		.title('New DoubleMatch')
 		.fields([
-			nga.field('date', 'datetime'),
 			nga.field('player11', 'reference')
 				.label('Player A 1')
 				.targetEntity(player)
@@ -267,12 +316,28 @@ endavaopenadmin.config(['NgAdminConfigurationProvider', function(nga) {
 			nga.field('round', 'reference')
 				.targetEntity(round)
 				.targetField(nga.field('name')),
-			nga.field('location')
+			nga.field('date', 'datetime')
+				.label('Play On (yyyy-MM-dd)')
+				.format('yyyy-MM-dd')
+				.map(function (value, entry) {
+					if(entry.date && entry.time) {
+						entry.date = entry.date + ' ' + entry.time;
+						entry.time = undefined;
+					}
+					
+					return entry.date;
+				}),
+			nga.field('time')
+				.label('Time (HH:mm)'),
+			nga.field('location', 'choice')
+				.choices([
+				  { value: 'Niagara Courts', label: 'Niagara Courts' },
+				  { value: 'State University', label: 'State University' },
+				])
 		]);
 	doublematch.editionView()
 		.title('Edit DoubleMatch')
 		.fields([
-			nga.field('date', 'datetime'),
 			nga.field('round')
 				.map(function truncate(value, entry) {
 					return value.name;
@@ -295,12 +360,24 @@ endavaopenadmin.config(['NgAdminConfigurationProvider', function(nga) {
 					}
 				})
 				.editable(false),
-			nga.field('location')
-				.editable(false),
+			nga.field('date', 'string')
+				.label('Play On (yyyy-MM-dd HH:mm)')
+				.map(function truncate(value, entry) {
+					if(entry.round && value) {
+						return value.substr(0, 10) + ' ' + value.substr(11, 5);
+					}
+
+					return value;
+				}),
 			nga.field('set1'),
 			nga.field('set2'),
 			nga.field('set3'),
-			nga.field('summary')
+			nga.field('summary'),
+			nga.field('location', 'choice')
+				.choices([
+				  { value: 'Niagara Courts', label: 'Niagara Courts' },
+				  { value: 'State University', label: 'State University' },
+				])
 		]);
 	
 	nga.configure(app);
