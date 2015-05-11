@@ -15,18 +15,6 @@ module.exports = {
     location: {
       type: 'string'
     },
-    set1: {
-      type: 'string'
-    },
-    set2: {
-      type: 'string'
-    },
-    set3: {
-      type: 'string'
-    },
-    summary: {
-      type: 'string'
-    },
     player11: {
       model: 'Player'
     },
@@ -38,6 +26,20 @@ module.exports = {
     },
     player22: {
       model: 'Player'
+    },
+
+    //Match results
+    set1: {
+      type: 'string'
+    },
+    set2: {
+      type: 'string'
+    },
+    set3: {
+      type: 'string'
+    },
+    summary: {
+      type: 'string'
     },
 
     //FK to round

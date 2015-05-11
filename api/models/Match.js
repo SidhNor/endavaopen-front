@@ -17,6 +17,14 @@ module.exports = {
       type: 'string'
     },
 
+    player1: {
+      model: 'Player'
+    },
+    player2: {
+      model: 'Player'
+    },
+
+    //Match results
     set1: {
       type: 'string'
     },
@@ -28,14 +36,6 @@ module.exports = {
     },
     summary: {
       type: 'string'
-    },
-
-    player1: {
-      model: 'Player'
-    },
-
-    player2: {
-      model: 'Player'
     },
 
     //FK to round
