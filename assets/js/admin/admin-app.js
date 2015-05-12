@@ -24,11 +24,15 @@ endavaopenadmin.config(['NgAdminConfigurationProvider', function(nga) {
 		.title('Players')
 		.fields([
 			nga.field('id'),
-			nga.field('fullName'),
-			nga.field('deliveryUnit'),
-			nga.field('jobTitle'),
-			nga.field('seedNumber'),
+			nga.field('fullName')
+				.label('Name'),
+			nga.field('deliveryUnit')
+				.label('Work')
+				.map(function (value, entry) {
+					return entry.jobTitle + ' (' + entry.deliveryUnit + ')';
+				}),
 			nga.field('createdAt', 'datetime')
+				.label('Created On')
 		])
 		.listActions(['show', 'edit', 'delete']);
 	player.creationView()
