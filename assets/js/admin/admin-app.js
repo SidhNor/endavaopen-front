@@ -79,26 +79,26 @@ endavaopenadmin.config(['NgAdminConfigurationProvider', function(nga) {
 		.fields([
 			nga.field('id'),
 			nga.field('name'),
-			nga.field('started')
+			nga.field('started', 'boolean')
 		])
 		.listActions(['show', 'edit', 'delete']);
 	tournament.creationView()
 		.title('New Tournament')
 		.fields([
 			nga.field('name'),
-			nga.field('started')
+			nga.field('started', 'boolean')
 		]);
 	tournament.editionView()
 		.title('Edit Tournament')
 		.fields([
 			nga.field('name'),
-			nga.field('started')
+			nga.field('started', 'boolean')
 		]);
 	tournament.showView()
 		.title('Tournament Details')
 		.fields([
 			nga.field('name'),
-			nga.field('started')
+			nga.field('started', 'boolean')
 		]);
 	//----------------------------------------------ROUND
 
@@ -129,7 +129,7 @@ endavaopenadmin.config(['NgAdminConfigurationProvider', function(nga) {
 						entry.day = entry.day + ' ' + entry.time;
 						entry.time = undefined;
 					}
-					
+
 					return entry.day;
 				}),
 			nga.field('time')
@@ -221,7 +221,7 @@ endavaopenadmin.config(['NgAdminConfigurationProvider', function(nga) {
 						entry.date = entry.date + 'T' + entry.time + ':00.000Z';
 						entry.time = undefined;
 					}
-					
+
 					return entry.date;
 				}),
 			nga.field('time')
@@ -328,7 +328,7 @@ endavaopenadmin.config(['NgAdminConfigurationProvider', function(nga) {
 						entry.date = entry.date + ' ' + entry.time;
 						entry.time = undefined;
 					}
-					
+
 					return entry.date;
 				}),
 			nga.field('time')
@@ -383,7 +383,7 @@ endavaopenadmin.config(['NgAdminConfigurationProvider', function(nga) {
 				  { value: 'State University', label: 'State University' },
 				])
 		]);
-	
+
 	nga.configure(app);
 }]);
 
