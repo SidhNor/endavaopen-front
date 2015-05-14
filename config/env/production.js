@@ -31,8 +31,8 @@ module.exports = {
 
   session: {
     adapter: 'mongo',
-    host: process.env.OPENSHIFT_MONGODB_DB_HOST,
-    port: process.env.OPENSHIFT_MONGODB_DB_PORT,
+    host: process.env.OPENSHIFT_MONGODB_DB_HOST || 'localhost',
+    port: process.env.OPENSHIFT_MONGODB_DB_PORT || 27017,
     username: process.env.OPENSHIFT_MONGODB_DB_USERNAME,
     password: process.env.OPENSHIFT_MONGODB_DB_PASSWORD,
     db: 'open',
