@@ -4,10 +4,17 @@ module.exports = {
 		res.locals.layout = 'layouts/blank';
 		res.view({});
 	},
-	
+
 	schedule: function(req, res) {
-		res.locals.layout = 'layouts/blank';
-		res.view({});
+    var tourId = req.param('tour');
+    tournament.findOne({ id: tourId }, function(err, tournament) {
+      res.locals.layout = 'layouts/blank';
+      if (typeof err === 'undefined') {
+        res.view({indoor: false });
+      } else {
+        res.view({indoor: tournament.indoor });
+      }
+    });
 	},
 
 	outdoor: function(req, res) {
@@ -24,4 +31,5 @@ module.exports = {
     res.locals.layout = 'layouts/blank';
     res.view({});
   }
-}
+};
+
