@@ -79,26 +79,30 @@ endavaopenadmin.config(['NgAdminConfigurationProvider', function(nga) {
 		.fields([
 			nga.field('id'),
 			nga.field('name'),
-			nga.field('started')
+			nga.field('started'),
+			nga.field('indoor', 'boolean')
 		])
 		.listActions(['show', 'edit', 'delete']);
 	tournament.creationView()
 		.title('New Tournament')
 		.fields([
 			nga.field('name'),
-			nga.field('started')
+			nga.field('started'),
+			nga.field('indoor', 'boolean')
 		]);
 	tournament.editionView()
 		.title('Edit Tournament')
 		.fields([
 			nga.field('name'),
-			nga.field('started')
+			nga.field('started'),
+			nga.field('indoor', 'boolean')
 		]);
 	tournament.showView()
 		.title('Tournament Details')
 		.fields([
 			nga.field('name'),
-			nga.field('started')
+			nga.field('started'),
+			nga.field('indoor', 'boolean')
 		]);
 	//----------------------------------------------ROUND
 

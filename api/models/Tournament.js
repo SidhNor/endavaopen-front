@@ -16,6 +16,9 @@ module.exports = {
     started: {
       type: 'boolean'
     },
+	indoor: {
+      type: 'boolean'
+    },
     rounds: {
       collection: 'round',
       via: 'tournament'

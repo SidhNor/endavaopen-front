@@ -4,6 +4,11 @@ module.exports = {
 		res.locals.layout = 'layouts/blank';
 		res.view({});
 	},
+	
+	schedule: function(req, res) {
+		res.locals.layout = 'layouts/blank';
+		res.view({});
+	},
 
 	outdoor: function(req, res) {
 		res.locals.layout = 'layouts/blank';
