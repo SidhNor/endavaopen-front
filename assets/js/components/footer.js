@@ -39,7 +39,7 @@ var Footer = React.createClass({
               <IconButton href="https://twitter.com/endava" secondary={true} linkButton={true}>
                 <TwitterIcon/>
               </IconButton>
-              <IconButton secondary={true} href="https://www.facebook.com/endava" linkButton={true}>
+              <IconButton secondary={true} href="https://www.facebook.com/events/488373711311268/" linkButton={true}>
                 <FacebookIcon/>
               </IconButton>
             </span>
