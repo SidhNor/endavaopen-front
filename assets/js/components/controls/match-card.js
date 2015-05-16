@@ -6,6 +6,7 @@ var MatchPlayer = require('../controls/match-player-widget');
 var actions = require('../../actions/actions');
 var matchesStore = require('../../stores/matchesStore');
 var doubleMatchesStore = require('../../stores/doubleMatchesStore');
+var moment = require('moment');
 
 var MatchCard = React.createClass({
 
@@ -22,7 +23,7 @@ var MatchCard = React.createClass({
       match = matchesStore.getMatchById(this.props.matchId);
     }
 
-    var matchDate = new Date(match.date);
+    var matchDate = moment.utc(match.date);
 
     var score = '';
     if (match.set1) {
@@ -69,7 +70,7 @@ var MatchCard = React.createClass({
       <section className="page-section match-card">
         <Card key={match.id}>
           <div>
-            <h4 className="match-info">{match.location}, {matchDate.toLocaleString()}</h4>
+            <h4 className="match-info">{match.location}, {matchDate.format('MMMM Do YYYY, h:mm a')}</h4>
             {playerInfo}
           </div>
         </Card>

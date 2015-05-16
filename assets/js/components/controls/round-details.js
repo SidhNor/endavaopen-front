@@ -51,6 +51,9 @@ var RoundDetails = React.createClass({
 
   render: function() {
 
+    if (!this.state.round) {
+      return <div></div>;
+    }
     var matches = this.state.round.matches.map(function(match) {
       return (
         <MatchCard matchId={match.id} key={match.id} isDouble={false}/>
