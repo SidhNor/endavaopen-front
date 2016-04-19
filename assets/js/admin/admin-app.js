@@ -407,4 +407,11 @@ endavaopenadmin.config(["RestangularProvider", function(rp) {
 
 		return { params: params, headers: headers };
 	});
+  rp.addResponseInterceptor(function(data, operation, what, url, response) {
+    if (operation == "getList") {
+      var contentRange = response.headers('Content-Range');
+      response.totalCount = contentRange.split('/')[1];
+    }
+    return data;
+  });
 }]);
