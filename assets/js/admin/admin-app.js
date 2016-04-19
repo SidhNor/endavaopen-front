@@ -403,6 +403,8 @@ endavaopenadmin.config(["RestangularProvider", function(rp) {
 			delete params._sortField;
 		}
 
-		return { params: params };
+    headers['Cache-Control'] = 'no-cache';
+
+		return { params: params, headers: headers };
 	});
 }]);
