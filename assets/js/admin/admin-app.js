@@ -43,22 +43,22 @@ endavaopenadmin.config(['NgAdminConfigurationProvider', function(nga) {
 			nga.field('hqPhotoUri'),
 			nga.field('deliveryUnit'),
 			nga.field('jobTitle'),
-			nga.field('description'),
+			nga.field('description', 'text'),
 			nga.field('seedNumber')
 		]);
 	player.editionView()
-		.title('Edit Player')
+    .title('<img src="{{ entry.values.hqPhotoUri }}" width="50" style="vertical-align: text-bottom"/> {{ entry.values.fullName }}\'s details')
 		.fields([
 			nga.field('fullName'),
 			nga.field('photoUri'),
 			nga.field('hqPhotoUri'),
 			nga.field('deliveryUnit'),
 			nga.field('jobTitle'),
-			nga.field('description'),
+			nga.field('description', 'text'),
 			nga.field('seedNumber')
 		]);
 	player.showView()
-		.title('Player Details')
+    .title('<img src="{{ entry.values.hqPhotoUri }}" width="50" style="vertical-align: text-bottom"/> {{ entry.values.fullName }}\'s details')
 		.fields([
 			nga.field('id'),
 			nga.field('fullName'),
@@ -66,7 +66,7 @@ endavaopenadmin.config(['NgAdminConfigurationProvider', function(nga) {
 			nga.field('hqPhotoUri'),
 			nga.field('deliveryUnit'),
 			nga.field('jobTitle'),
-			nga.field('description'),
+			nga.field('description', 'text'),
 			nga.field('seedNumber'),
 			nga.field('createdAt', 'datetime'),
 			nga.field('updatedAt', 'datetime')
