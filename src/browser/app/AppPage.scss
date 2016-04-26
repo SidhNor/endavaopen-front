@@ -1,0 +1,37 @@
+// http://phonegap-tips.com/articles/essential-phonegap-css-webkit-tap-highlight-color.html
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.layout {
+  display: flex;
+}
+
+.vertical {
+  flex-direction: column;
+}
+
+.horizontal {
+  flex-direction: row;
+}
+
+.center {
+  align-items: center;
+}
+
+.flex {
+  flex: 1;
+  flex-basis: 0.000000001px
+}
+
+.justified {
+  justify-content: space-between;
+}
+
+.self-end {
+  align-self: flex-end;
+}
+
+.end {
+  align-items: flex-end;
+}

@@ -1,47 +1,62 @@
-## Description
-Endava Open is a website that exposes REST Api, as well as provides an isomorphic responsive front end for the 2015 tennis event organized by Endava Chisinau
+# este + cordova starter kit
 
-## Project structure
-[Sails](sailsjs.org) is used as an MVC framework backed up by [Waterline](https://github.com/balderdashy/waterline) ORM communicating with MongoDB
+## Git Commit Messages
 
-Front end part of the app is driven by [ReactJS](https://facebook.github.io/react/), [Material-UI for react](https://github.com/callemall/material-ui)
+* **Use the present tense ("Add feature" not "Added feature")**
+* **Use the imperative mood ("Move cursor to..." not "Moves cursor to...")**
+* **Limit the first line to 72 characters or less**
+* Reference issues and pull requests liberally
 
-- assets : Directory with React SPA 
- - js
- - styles
-- views : Directory with server-side views and layouts
-- config: Configuration directory
-- api   : Rest API blueprints, Models, controllers, etc
- 
-## Installation &nbsp;
+## Prerequisites
 
-**With [node](http://nodejs.org) [installed](http://sailsjs.org/#!documentation/new-to-nodejs):**
-```sh
-# Get the latest stable release of Sails
-$ npm install sails -g
+Install [node.js](http://nodejs.org).
 
-# Install local dependencies
-$ npm install
+Then install [gulp.js](http://gulpjs.com/).
+```shell
+npm install -g gulp
 ```
 
-**Start up the server**
-```sh
-$ sails lift
+Install all project dependencies
+```shell
+npm install
 ```
-> In case you did not install sails globally, you can run node as default
-> ```sh
-> $ node start
-> ```
+
+## Start Development
+
+- run `gulp`
+- point your browser to [localhost:8000](http://localhost:8000)
+
+## Dev Tasks
+
+- `gulp` run app in development mode
+- `gulp -p` run app in production mode
+- `gulp test`
 
 
-## OpenShift specific Repo layout
-| Directory name| Description |
-| ------------- | ----------- |
-|  node_modules/                       | Any Node modules packaged with the app |
-|  deplist.txt                         | Deprecated. |
-|  package.json                        | npm package descriptor. |
-|  .openshift/                         | Location for openshift specific files |
-|  .openshift/action_hooks/pre_build   | Script that gets run every git push before the build |
-|  .openshift/action_hooks/build       | Script that gets run every git push as part of the build process (on the CI system if available) |
-|  .openshift/action_hooks/deploy      | Script that gets run every git push after build but before the app is restarted |
-|  .openshift/action_hooks/post_deploy | Script that gets run every git push after the app is restarted |
+## Translation tasks
+
+- `gulp extractDefaultMessages` extract default translation messages from source hooks
+
+## Cordova
+First, make sure you have Cordova installed:
+
+```
+npm install -g cordova
+```
+
+A cordova folder is already created for you. 
+It has a default ` config.xml ` preconfigured with some default plugins and platforms and is also hooked into the webpack build system.
+
+Add the platform(s) you want to build for:
+
+```
+cd cordova/
+cordova platform add ios # or 'android'
+```
+
+To run a packaged app
+
+```
+cordova run ios # or 'android' or 'windows'
+```
+This will also launch the webpack build before packaging.

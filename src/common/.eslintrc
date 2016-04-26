@@ -1,0 +1,14 @@
+{
+  "globals": {
+    "clearInterval": false,
+    "clearTimeout": false,
+    "console": false,
+    "devToolsExtension": false,
+    "module": false,
+    "require": false,
+    "setInterval": false,
+    "setTimeout": false
+  }
+}
+
+
